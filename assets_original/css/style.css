@@ -1,0 +1,176 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+.font-kanit{
+    font-family: 'Kanit', sans-serif;
+    font-weight:bold;
+}
+
+.font-kanits{
+    font-family: 'Kanit', sans-serif;
+
+}
+
+  /* added the following to give the background color of the arrows as red for visibility, the default which can be found in the slick-theme.css was white */
+  .slick-prev:before,
+  .slick-next:before {
+    color: rgb(127, 120, 120);
+  }
+
+  /* .slick-slider {
+    margin:0 -15px;
+} */
+.slick-slide {
+    padding:20px;
+    /* text-align:center; */
+    margin-right:10px;
+    margin-left:10px;
+}
+
+/* .card:hover{
+    z-index:100px;
+    transform: scale(1.5);
+    transition: all .5s ease-in-out;
+} */
+
+/* .slider {
+    /* width: 80%; */
+    /* margin: 100px auto; */
+    /* } */
+    
+    /* .slick-slide {
+    margin: 10px 20px;
+    } */
+    
+    .slick-slide .slick-center div{
+    transform: scale(0.9);
+    transition: all .5s ease-in-out;
+    }
+    
+    .slick-dotted img:hover {
+    transform: scale(1.5);
+    transition: all .5s ease-in-out;
+    }
+
+
+    .form{
+        position: relative;
+    }
+    
+    .form .fa-search{
+        position: absolute;
+        top:20px;
+        left: 20px;
+        color: #9ca3af;
+    
+    }
+    
+    .form span{
+        position: absolute;
+        right: 17px;
+        top: 13px;
+        padding: 2px;
+        border-left: 1px solid #d1d5db;
+    
+    }
+    
+    .left-pan{
+        padding-left: 7px;
+    }
+    
+    .left-pan i{
+       
+       padding-left: 10px;
+    }
+    
+    .form-input{
+    
+        height: 55px;
+        text-indent: 33px;
+        border-radius: 10px;
+    }
+    
+    .form-input:focus{
+    
+        box-shadow: none;
+        border:none;
+    }
+
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item .nav-link:active,
+.navbar-light .nav-item .nav-link:focus,
+.navbar-light .nav-item:hover .nav-link {
+    color: #B42D2D;
+}
+
+
+/* .table tbody tr:hover td, .table tbody tr:hover th {
+    background-color: #a80505f1;
+    transition: all .5s ease-in-out;
+    color:white;
+    font-weight:bold;
+   
+} */
+
+    /* wizard step css end*/
+/* 
+.tooltip > .tooltip-inner {background-color: #fff;}
+.tooltip > .arrow {border-bottom-color: #f00;} */
+
+/* Latest compiled and minified CSS included as External Resource*/
+
+/* Optional theme */
+
+/*@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');*/
+
+/*
+
+*/
+.nav-pills .nav-link.active {
+    background-color:#B42D2D !important;
+}
+
+.card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.card:hover{
+     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.avoid-clicks {
+    pointer-events: none;
+   }
+
+
+
+   /* magnifyer css*/
+   .demo {
+    width: 300px;
+    position: absolute;
+    }
+    .magnifier {
+    border: 2px solid white;
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    display: none;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    cursor: url('../magnifyer/invisible.cur'), default;
+    -moz-box-shadow: 0 0 5px #777, 0 0 10px #aaa inset;
+    -webkit-box-shadow: 0 0 5px #777;
+    box-shadow: 0 0 5px #777, 0 0 10px #aaa inset;
+    -moz-border-radius: 90px;
+    -webkit-border-radius: 90px;
+    border-radius: 90px;
+    }
+    .magnifier.chrome {
+    /* A special chrome version of the cursor */
+    cursor: url('../magnifyer/invisible_chrome.cur'), default;
+    }
+   /* magnifyer css end*/
