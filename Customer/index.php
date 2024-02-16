@@ -942,21 +942,7 @@
                                                 <div class="container">
                                                     <input type="hidden" id="requiID">
                                                     <div class="form-check" id="formCheckEdit">
-                                                        <!-- <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox"
-                                                                class="form-check-input form-check-primary form-check-glow"
-                                                                 value="2">
-                                                            <label class="form-check-label" for="customColorCheck1">Mark Cruz</label>
-                                                        </div>
-
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox"
-                                                                class="form-check-input form-check-primary form-check-glow"
-                                                                 value="3">
-                                                            <label class="form-check-label" for="customColorCheck1">Jesica Ropa</label>
-                                                        </div> -->
                                                     </div>
-
                                                 </div>
 
                                                 <div class="container text-center mt-3">
@@ -1100,6 +1086,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <footer>
                             <div class="footer clearfix mb-0 text-muted">
                                 <div class="float-start">
@@ -1111,13 +1098,8 @@
                             </div>
                         </footer>
 
-                    </div>
-                    
-                    
-                </div>
-                
+                    </div>   
             </div>
-            
         </div>
     </div>
     <div id="qr" class="d-none"></div>
