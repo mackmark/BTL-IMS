@@ -47,31 +47,31 @@
             height: 25px;
             background-color: #FFFFFF; /* Change the background color as desired */
             border: 2px solid #445069; /* Change the border color as desired */
-            margin: 0.2px; Adjust /*the margin between cells as needed*/
+            margin: 0.2px; /*the margin between cells as needed*/
         }
 
         .cell-bitrode{
-            width: 75px; /* Adjust the width and height as needed */
+            width: 75px; /* the width and height as needed */
             height: 25px;
             background-color: #FFFFFF; /* Change the background color as desired */
             border: 2px solid #445069; /* Change the border color as desired */
-            margin: 0.2px; Adjust /*the margin between cells as needed*/
+            margin: 0.2px; /*the margin between cells as needed*/
         }
 
         .cell-divider{
-            width: 75px; /* Adjust the width and height as needed */
+            width: 75px; /* the width and height as needed */
             height: 5px;
             background-color: #445069; /* Change the background color as desired */
             border: 2px solid #445069; /* Change the border color as desired */
-            margin: 0.2px; Adjust /*the margin between cells as needed*/
+            margin: 0.2px; /*the margin between cells as needed*/
         }
 
         .cell-allocate{
-            width: 175px; /* Adjust the width and height as needed */
+            width: 175px; /* the width and height as needed */
             height: 120px;
             background-color: #FFFFFF; /* Change the background color as desired */
             border: 4px solid #445069; /* Change the border color as desired */
-            margin: 0.2px; Adjust /*the margin between cells as needed*/
+            margin: 0.2px; /*the margin between cells as needed*/
         }
     </style>
 
@@ -120,30 +120,7 @@
                         
                         <!-- <li class="sidebar-item  has-sub"> -->
                         <li class="sidebar-item">
-                            <!-- <a href="#" class='sidebar-link'  onclick="loadContent('request.php')">
-                                <i class="bi bi-stack"></i>
-                                <span>Circuit Map</span>
-                            </a> -->
-                            <!-- <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="#" onclick="loadContent('request.php')">Test Result Request</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="#" onclick="loadContent('request.php')">Battery Test Result</a>
-                                </li>
-
-                            </ul> -->
-                        </li>
-
-                        <!-- <li
-                            class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'  onclick="loadContent('request.php')">
-                                <i class="bi bi-collection-fill"></i>
-                                <span>PTP Schedule</span>
-                            </a>
-                        </li> -->
-
-                        
+                        </li>                  
                     </ul>
                 </div>
             </div>
@@ -168,32 +145,6 @@
                                 <h5 class="d-none d-sm-block">&nbsp;&nbsp;&nbsp;Information Management System</h5>
                             </div>
                             <ul class="navbar-nav ms-auto mb-lg-0">
-                                <!-- <li class="nav-item dropdown me-1">
-                                    <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class='bi bi-envelope bi-sub fs-4'></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <h6 class="dropdown-header">Mail</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">No new mail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown me-3">
-                                    <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class='bi bi-bell bi-sub fs-4'></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="dropdownMenuButton">
-                                        <li class="dropdown-header">
-                                            <h6>Notifications</h6>
-                                        </li>
-
-                                        <li>
-                                            <p class="text-center py-2 mb-0"><a href="#">See all notification</a></p>
-                                        </li>
-                                    </ul>
-                                </li> -->
                             </ul>
                             <div class="dropdown">
                                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -230,473 +181,472 @@
                 
             </header>
             <div id="main-content">
-                    <div id="content">
-                        <section class="row" id ="cardStat">
-                            <div class="col-12 col-lg-8">
-                                <div class="row">
-                                    <div class="col-4 col-lg-4 col-md-4">
-                                        <div class="card">
-                                            <div class="card-body px-4 py-4-5">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                        <div class="stats-icon purple mb-2">
-                                                            <i class="iconly-boldScan"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                        <h6 class="text-muted font-semibold">ON-GOING</h6>
-                                                        <h3 class="font-extrabold mb-0">120</h3>
+                <div id="content">
+                    <section class="row" id ="cardStat">
+                        <div class="col-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-4 col-lg-4 col-md-4">
+                                    <div class="card">
+                                        <div class="card-body px-4 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                                    <div class="stats-icon purple mb-2">
+                                                        <i class="iconly-boldScan"></i>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 col-lg-4 col-md-4">
-                                        <div class="card">
-                                            <div class="card-body px-4 py-4-5">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                        <div class="stats-icon blue mb-2">
-                                                            <i class="iconly-boldDanger"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                        <h6 class="text-muted font-semibold">HOLD</h6>
-                                                        <h3 class="font-extrabold mb-0">30</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 col-lg-4 col-md-4">
-                                        <div class="card">
-                                            <div class="card-body px-4 py-4-5">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                        <div class="stats-icon green mb-2">
-                                                            <i class="iconly-boldSwap"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                        <h6 class="text-muted font-semibold">CIRCUIT</h6>
-                                                        <h3 class="font-extrabold mb-0">90 %</h3>
-                                                    </div>
+                                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                    <h6 class="text-muted font-semibold">ON-GOING</h6>
+                                                    <h3 class="font-extrabold mb-0">120</h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-lg-4">
-                                <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                                <div class="stats-icon red mb-2">
-                                                    <i class="iconly-boldBookmark"></i>
+                                <div class="col-4 col-lg-4 col-md-4">
+                                    <div class="card">
+                                        <div class="card-body px-4 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                                    <div class="stats-icon blue mb-2">
+                                                        <i class="iconly-boldDanger"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9  ">
-                                                <h6 class="text-muted font-semibold float-start">TIMELINESS</h6>
-                                                <h6 class="font-extrabold mb-0 float-start">In terms of test report release</h6>
+                                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                    <h6 class="text-muted font-semibold">HOLD</h6>
+                                                    <h3 class="font-extrabold mb-0">30</h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                        </section>
-
-                        <section class="section position-relative" id="BtrCard">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="container-fluid">
-                                        <h4 class="card-title float-start">Manage Battery Testing Request</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <!-- Table with no outer spacing -->
-                                    <div class="divider divider-left">
-                                        <div class="divider-text text-primary">Request Summary</div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <input type="radio" class="btn-check" name="options-outlined" value="2" id="primary-outlined"
-                                            autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="primary-outlined">Battery Test Request</label>
-                                        
-                                        <input type="radio" class="btn-check" name="options-outlined" value="1" id="primary-outlined2"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="primary-outlined2">On-going Tests </label>
-                                    </div>
-                                    
-                                    <div id="ongoing">
-                                        <div class="table-responsive mt-2">
-                                            <table class="table table-hover" id="Ongoing_tbl">
-                                                <thead style="font-size:14px;">
-                                                    <tr>
-                                                        <th class="text-center">Test ID</th>
-                                                        <th class="text-center">Sample ID</th>
-                                                        <th class="text-center">Test Parameters</th>
-                                                        <th class="text-center">Requestor</th>
-                                                        <th class="text-center">Circuit</th>
-                                                        <th class="text-center">Battery Code</th>
-                                                        <th>Status</th>
-                                                        <th>Date Received</th>
-                                                        <th class="text-left">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody style="font-size:13px;">
-
-                                                    <tr>
-                                                        <td class="text-center">T-3006-001</td>
-                                                        <td class="text-center">PD2306-001</td>
-                                                        <td class="text-center">M-series 1</td>
-                                                        <td class="text-center">MCCruz</td>
-                                                        <td class="text-center">ADR1</td>
-                                                        <td class="text-center">WF12345</td>
-                                                        <td>
-                                                            <div class="badges">
-                                                                <span class="badge bg-light-success">On-going</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>August 23, 2023</td>
-                                                        <td>
-                                                            <div class="btn-group mb-0" role="group" aria-label="Basic example">
-                                                                <button type="button" class="btn btn-sm btn-info"><i class="bi bi-eye"></i></button>
-                                                                <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div id="btr">
-                                        <div class="table-responsive mt-2">
-                                            <table class="table table-hover" id="TestRequest_tbl">
-                                                <thead style="font-size:14px;">
-                                                    <tr>
-                                                        <th class="text-center" style="white-space:nowrap;">Request ID</th>
-                                                        <th class="text-center">Requestor</th>
-                                                        <th class="text-center" style="white-space:nowrap;">Requested Date</th>
-                                                        <th class="text-center" style="white-space:nowrap;">Project Name</th>
-                                                        <th class="text-center">Purpose</th>
-                                                        <th class="text-center">Objective</th>
-                                                        <th class="text-center">Quantity</th>
-                                                        <th>Requirement</th>
-                                                        <th>Status</th>
-                                                        <th class="text-left">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody style="font-size:13px;"></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="section position-relative" id="CirecuitMapCard">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="container-fluid">
-                                        <h4 class="card-title float-start">Circuit Mapping</h4>
-                                        <div class="btn-group mb-3 float-end" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-light">
-                                                Vacant <span id="MapVacant" class="badge bg-secondary">122</span>
-                                            </button>
-                                            <button type="button" class="btn btn-primary">
-                                                In Use <span id="MapInUse" class="badge bg-transparent">4</span>
-                                            </button>
-                                            <button type="button" class="btn btn-danger">
-                                                Defect <span id="MapDefect" class="badge bg-transparent">0</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0" style="overflow-y:scroll;height:500px;overflow-x:hidden;">
-                                    <div class="row">
-                                        <div class="col-lg-6">
+                                <div class="col-4 col-lg-4 col-md-4">
+                                    <div class="card">
+                                        <div class="card-body px-4 py-4-5">
                                             <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb1_map">
+                                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                                    <div class="stats-icon green mb-2">
+                                                        <i class="iconly-boldSwap"></i>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb2_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb4_map">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb5_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb6_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb7_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb8_map">
-                                                    </div>
+                                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                                    <h6 class="text-muted font-semibold">CIRCUIT</h6>
+                                                    <h3 class="font-extrabold mb-0">90 %</h3>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row mt-3">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb16_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb15_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb14_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb13_map">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb12_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb11_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb10_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb9_map">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-3">
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb20_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb19_map">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="row">
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb18_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-3">
-                                                    <div class="cube" id="wb17_map">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-1">
-                                                </div>
-
-                                                <div class="col-lg-5">
-                                                    <div class="cube position-relative" style="top:-65px; left:23px;" id="wbRcnRct_map">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <div class="modal fade text-left" id="ViewBTR" tabindex="-1" role="dialog"
-                            aria-labelledby="myModallabelViewBTR" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable modal-lg"
-                                role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModallabelViewBTR">Battery Test Request
-                                        </h5>
-                                        <button type="button" class="close" data-bs-dismiss="modal"
-                                            aria-label="Close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" id="BTRViewBody">
-                                        
-                                    </div>
-                                    <div class="modal-footer" id="viewBtrFooter"> 
-                                        <!-- <div class="container text-center">
-                                            <button type="button" class="btn btn-light-warning" id="BTR_RevisioBtn">
-                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">For Revision</span>
-                                            </button>
-                                            <button type="button" class="btn btn-primary ml-1" id="ApproveBTRBtn">
-                                                <i class="bx bx-check d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Approve</span>
-                                            </button>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="card">
+                                <div class="card-body px-4 py-4-5">
+                                    <div class="row">
+                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
+                                            <div class="stats-icon red mb-2">
+                                                <i class="iconly-boldBookmark"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9  ">
+                                            <h6 class="text-muted font-semibold float-start">TIMELINESS</h6>
+                                            <h6 class="font-extrabold mb-0 float-start">In terms of test report release</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="modal fade text-left" id="ApprovalModal"  tabindex="-1" role="dialog" aria-labelledby="myModalapprovalModal" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalapprovalModal">Battery Testing Request Approval</h4>
-                                        <button type="button" class="close" id="ApproveModalClose"
-                                            aria-label="Close">
-                                            <i data-feather="x"></i>
+                        </div>
+                    </section>
+
+                    <section class="section position-relative" id="BtrCard">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="container-fluid">
+                                    <h4 class="card-title float-start">Manage Battery Testing Request</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Table with no outer spacing -->
+                                <div class="divider divider-left">
+                                    <div class="divider-text text-primary">Request Summary</div>
+                                </div>
+                                <div class="container-fluid">
+                                    <input type="radio" class="btn-check" name="options-outlined" value="2" id="primary-outlined"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="primary-outlined">Battery Test Request</label>
+                                    
+                                    <input type="radio" class="btn-check" name="options-outlined" value="1" id="primary-outlined2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="primary-outlined2">On-going Tests </label>
+                                </div>
+                                
+                                <div id="ongoing">
+                                    <div class="table-responsive mt-2">
+                                        <table class="table table-hover" id="Ongoing_tbl">
+                                            <thead style="font-size:14px;">
+                                                <tr>
+                                                    <th class="text-center">Test ID</th>
+                                                    <th class="text-center">Sample ID</th>
+                                                    <th class="text-center">Test Parameters</th>
+                                                    <th class="text-center">Requestor</th>
+                                                    <th class="text-center">Circuit</th>
+                                                    <th class="text-center">Battery Code</th>
+                                                    <th>Status</th>
+                                                    <th>Date Received</th>
+                                                    <th class="text-left">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="font-size:13px;">
+
+                                                <tr>
+                                                    <td class="text-center">T-3006-001</td>
+                                                    <td class="text-center">PD2306-001</td>
+                                                    <td class="text-center">M-series 1</td>
+                                                    <td class="text-center">MCCruz</td>
+                                                    <td class="text-center">ADR1</td>
+                                                    <td class="text-center">WF12345</td>
+                                                    <td>
+                                                        <div class="badges">
+                                                            <span class="badge bg-light-success">On-going</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>August 23, 2023</td>
+                                                    <td>
+                                                        <div class="btn-group mb-0" role="group" aria-label="Basic example">
+                                                            <button type="button" class="btn btn-sm btn-info"><i class="bi bi-eye"></i></button>
+                                                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="btr">
+                                    <div class="table-responsive mt-2">
+                                        <table class="table table-hover" id="TestRequest_tbl">
+                                            <thead style="font-size:14px;">
+                                                <tr>
+                                                    <th class="text-center" style="white-space:nowrap;">Request ID</th>
+                                                    <th class="text-center">Requestor</th>
+                                                    <th class="text-center" style="white-space:nowrap;">Requested Date</th>
+                                                    <th class="text-center" style="white-space:nowrap;">Project Name</th>
+                                                    <th class="text-center">Purpose</th>
+                                                    <th class="text-center">Objective</th>
+                                                    <th class="text-center">Quantity</th>
+                                                    <th>Requirement</th>
+                                                    <th>Status</th>
+                                                    <th class="text-left">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="font-size:13px;"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section position-relative" id="CirecuitMapCard">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="container-fluid">
+                                    <h4 class="card-title float-start">Circuit Mapping</h4>
+                                    <div class="btn-group mb-3 float-end" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-light">
+                                            Vacant <span id="MapVacant" class="badge bg-secondary">122</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary">
+                                            In Use <span id="MapInUse" class="badge bg-transparent">4</span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            Defect <span id="MapDefect" class="badge bg-transparent">0</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" id="setterApproval">
-                                        <input type="hidden" id="RequestId_holder">
+                                </div>
+                            </div>
+                            <div class="card-body p-0" style="overflow-y:scroll;height:500px;overflow-x:hidden;">
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb1_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb2_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb4_map">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb5_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb6_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb7_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb8_map">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb16_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb15_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb14_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb13_map">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb12_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb11_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb10_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb9_map">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb20_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb19_map">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row">
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb18_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="cube" id="wb17_map">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-1">
+                                            </div>
+
+                                            <div class="col-lg-5">
+                                                <div class="cube position-relative" style="top:-65px; left:23px;" id="wbRcnRct_map">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <div class="modal fade text-left" id="ViewBTR" tabindex="-1" role="dialog"
+                        aria-labelledby="myModallabelViewBTR" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg"
+                            role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myModallabelViewBTR">Battery Test Request
+                                    </h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="BTRViewBody">
+                                    
+                                </div>
+                                <div class="modal-footer" id="viewBtrFooter"> 
+                                    <!-- <div class="container text-center">
+                                        <button type="button" class="btn btn-light-warning" id="BTR_RevisioBtn">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">For Revision</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary ml-1" id="ApproveBTRBtn">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Approve</span>
+                                        </button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade text-left" id="ApprovalModal"  tabindex="-1" role="dialog" aria-labelledby="myModalapprovalModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalapprovalModal">Battery Testing Request Approval</h4>
+                                    <button type="button" class="close" id="ApproveModalClose"
+                                        aria-label="Close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" id="setterApproval">
+                                    <input type="hidden" id="RequestId_holder">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="benchmarkQty" class="text-primary">Set Prioritization </label>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                        <select class="form-select" id="prioritization">
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                             <div class="col-md-12">
-                                                <label for="benchmarkQty" class="text-primary">Set Prioritization </label>
+                                                <label for="ApprovedRemarks" class="text-primary">Remarks </label>
                                             </div>
                                             <div class="col-md-12 form-group">
-                                            <select class="form-select" id="prioritization">
-                                            </select>
+                                                <textarea id="ApprovedRemarks" class="form-control" name="ApprovedRemarks"
+                                                    placeholder=""></textarea>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="ApprovedRemarks" class="text-primary">Remarks </label>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <textarea id="ApprovedRemarks" class="form-control" name="ApprovedRemarks"
-                                                        placeholder=""></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <div class="modal-footer">
-                                        <div class="container text-center">
-                                            <button type="button" class="btn btn-sm btn-light-secondary"
-                                                id="ApproveModalClose2">
-                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Close</span>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-primary ml-1" id="BtrApproveBtn">
-                                                <i class="bx bx-check d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Approve</span>
-                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade text-left" id="RevisionModal"  tabindex="-1" role="dialog" aria-labelledby="myModalapprovalModal" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalapprovalModal">Battery Testing Request Revision</h4>
-                                        <button type="button" class="close" id="close_revision" data-bs-dismiss="modal"
-                                            aria-label="Close">
-                                            <i data-feather="x"></i>
+                                <div class="modal-footer">
+                                    <div class="container text-center">
+                                        <button type="button" class="btn btn-sm btn-light-secondary"
+                                            id="ApproveModalClose2">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-primary ml-1" id="BtrApproveBtn">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Approve</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" id="RequestId_Revise_holder">
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="RevisionBTR" class="text-primary">Remarks </label>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <textarea id="RevisionBTR" class="form-control" name="RevisionBTR"
-                                                        placeholder=""></textarea>
-                                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade text-left" id="RevisionModal"  tabindex="-1" role="dialog" aria-labelledby="myModalapprovalModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalapprovalModal">Battery Testing Request Revision</h4>
+                                    <button type="button" class="close" id="close_revision" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" id="RequestId_Revise_holder">
+                                    <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="RevisionBTR" class="text-primary">Remarks </label>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <textarea id="RevisionBTR" class="form-control" name="RevisionBTR"
+                                                    placeholder=""></textarea>
                                             </div>
                                         </div>
-                                    <div class="modal-footer">
-                                        <div class="container text-center">
-                                            <button type="button" class="btn btn-sm btn-light-secondary" id="close_revision2"
-                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Close</span>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-warning ml-1" id="BtrRevisionBtn">
-                                                <i class="bx bx-check d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Submit</span>
-                                            </button>
-                                        </div>
+                                    </div>
+                                <div class="modal-footer">
+                                    <div class="container text-center">
+                                        <button type="button" class="btn btn-sm btn-light-secondary" id="close_revision2"
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-warning ml-1" id="BtrRevisionBtn">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Submit</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <footer>
-                            <div class="footer clearfix mb-0 text-muted">
-                                <div class="float-start">
-                                    <p>2023 &copy; Philippine Batteries, Inc.</p>
-                                </div>
-                                <div class="float-end">
-                                    <p>MOTOLITE</p>
-                                </div>
-                            </div>
-                        </footer>
-
                     </div>
+
+                    <footer>
+                        <div class="footer clearfix mb-0 text-muted">
+                            <div class="float-start">
+                                <p>2023 &copy; Philippine Batteries, Inc.</p>
+                            </div>
+                            <div class="float-end">
+                                <p>MOTOLITE</p>
+                            </div>
+                        </div>
+                    </footer>
+
                 </div>
             </div>
         </div>

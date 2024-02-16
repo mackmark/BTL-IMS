@@ -5,7 +5,6 @@
         echo "<script type='text/javascript'>location.href='../index.php';</script>";
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -254,7 +253,6 @@
                         
                     </ul>
                 </div>
-
             </div>
         </div>
 
@@ -276,32 +274,6 @@
                                 <h5 class="d-none d-sm-block">&nbsp;&nbsp;&nbsp;Information Management System</h5>
                             </div>
                             <ul class="navbar-nav ms-auto mb-lg-0">
-                                <!-- <li class="nav-item dropdown me-1">
-                                    <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class='bi bi-envelope bi-sub fs-4'></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <h6 class="dropdown-header">Mail</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">No new mail</a></li>
-                                    </ul>
-                                </li> -->
-                                <!-- <li class="nav-item dropdown me-3">
-                                    <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class='bi bi-bell bi-sub fs-4'></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="dropdownMenuButton">
-                                        <li class="dropdown-header">
-                                            <h6>Notifications</h6>
-                                        </li>
-   
-                                        <li>
-                                            <p class="text-center py-2 mb-0"><a href="#">See all notification</a></p>
-                                        </li>
-                                    </ul>
-                                </li> -->
                             </ul>
                             <div class="dropdown">
                                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -335,7 +307,6 @@
                         </div>
                     </div>
                 </nav>
-                
             </header>
             <div id="main-content"> 
                     <div id="content">
@@ -2866,11 +2837,7 @@
                         </footer>
                         
                     </div>
-                    
-                </div>
-                
             </div>
-            
         </div>
     </div>
     <div id="qr" class="d-none"></div>
@@ -2880,13 +2847,7 @@
     <script src="../assets/extensions/sweetalert2/sweetalert2.min.js"></script>
 
     <script src="../assets_original/js/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdn.dhtmlx.com/gantt/5.1/dhtmlxgantt.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/frappe-gantt"></script>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/frappe-gantt@1.4.1/dist/frappe-gantt.min.js"></script> -->
     <script src="../node_modules/frappe-gantt/dist/frappe-gantt.min.js"></script>
-    
     
     <!--DataTable -->
     <script src="../assets_original/js/datatables.min.js"></script>
@@ -2905,11 +2866,9 @@
 
     <script src="../assets/js/pages/form-element-select.js"></script>
     <script src="../assets_original/js/draganddrop.js"></script>
-    <!-- <script src="../assets_original/QR_reader/instascan.min.js"></script> -->
     <script src="../node_modules/jsqr/dist/jsQR.js"></script>
     
     <script src="LabAnalystJs_repository/index_repo.js"></script>
-    
 </body>
 
 </html>
