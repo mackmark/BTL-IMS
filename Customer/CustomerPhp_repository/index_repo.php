@@ -1248,7 +1248,7 @@
 
             // $arrayCount = count($CheckedData);
 
-            for ($i = 1; $i < count($rowIndex); $i++) {
+            for ($i = 0; $i < count($rowIndex); $i++) {
                 $MtestID = $rowIndex[$i];
                 $MtestSTD = $STD[$i];
                 $MtestQTY = $QTY[$i];

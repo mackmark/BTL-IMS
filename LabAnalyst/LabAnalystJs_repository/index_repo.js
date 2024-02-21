@@ -1220,7 +1220,7 @@ function HRDTTestForm(ptpScheduleID, sampleID, currentTest, testTableID, formCat
     $('#TestDataBatNoHRDT').val(testSampleSysText)
     $('#TestDataTestDateHRDT').val(currentDate)
     $('#TestDataTestTypeHRDT').val(currentTestTxt)
-    $('#TestDataInputFormHRDT').modal('show')
+    // $('#TestDataInputFormHRDT').modal('show')
 
     $.ajax({
         type: "POST",
@@ -1240,23 +1240,263 @@ function HRDTTestForm(ptpScheduleID, sampleID, currentTest, testTableID, formCat
             HaveRow:HaveRow
         },
         success: function (data) {
-            // $('.testFormDivCapacity').html(data.content)
-            // $('#CapacityActionBtn').html(data.actionBtn)
-            // EquipmentNo(waterBathCellNoId)
-            // $('#TestDataInputFormCapacity').modal('show')
+            $('.testFormDivHRDT').html(data.content)
+            $('#HRDTActionBtn').html(data.actionBtn)
+            $('#TestDataInputFormHRDT').modal('show')
+            HRDTDischargeProfile_tbl()
+            HRDTTestResult_tbl()
+        }
+    });
+    
+}
+
+function HRDTSaveDetailBtn(formCatID, sampleID, testTableID, ptpTestScheduleID){
+    var formCategoryId = formCatID
+    var sampleId = sampleID
+    var testTableId = testTableID
+    var ptpTestScheduleId = ptpTestScheduleID
+    var DataFileName = $('#HRDTDataFileName').val()
+    var EquipmentNo = $('#HRDTTestDataEqipment').val()
+    var BatteryTemp = $('#HRDTBatTemp').val()
+    var OCV = $('#HRDTOCV').val()
+    var CCA = $('#HRDTCCA').val()
+    var IR = $('#HRDTIR').val()
+
+    console.log(formCategoryId,  sampleId, testTableId, ptpTestScheduleId, DataFileName, EquipmentNo, BatteryTemp, OCV, CCA, IR)
+
+    var formData = new FormData();
+    formData.append('action', 'HRDTSaveDetails')
+    formData.append('formCategoryId', formCategoryId)
+    formData.append('sampleId', sampleId)
+    formData.append('testTableId', testTableId)
+    formData.append('ptpTestScheduleId', ptpTestScheduleId)
+    formData.append('EquipmentNo', EquipmentNo)
+    formData.append('BatteryTemp', BatteryTemp)
+    formData.append('OCV', OCV)
+    formData.append('IR', IR)
+    formData.append('DataFileName', DataFileName)
+
+    var IsProceed = true;
+    for (let entry of formData.entries()) {
+        console.log(entry[0] + ':', entry[1]);
+        if(entry[1] === null || entry[1] === 0 || entry[1].trim() === ""){
+            Swal.fire('Data Validation', 'Field cannot be empty, please put n/a if not applicable.', 'warning');
+            IsProceed = false;
+            break;
+        }
+    }
+
+    if(IsProceed){
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Do you want to save this test details?',
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Save',
+          }).then(result => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        contentType: false,
+                        processData: false,
+                        url: "LabAnalystPhp_repository/index_repo.php",
+                        data: formData,
+                        success: function (data) {
+                            var result = JSON.parse(data.result)
+                            if(result==1){
+                                Swal.fire('success', 'Data has been saved.', 'success');
+                                $('#HRDTSaveDetailsBtn').addClass('d-none')
+                                $('#HRDTEditDetailsBtn').removeClass('d-none')
+                                alert(result)
+                            }
+                            else{
+                                Swal.fire('error', 'something went wrong.', 'error');
+                            }
+                        }
+                    });
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+                }
+         });
+    }
+}
+
+//HRDT Forms Modal Discharge Profile and TestResult
+
+function ShowProfileModalBtn(TestDataInputId){
+    var TestDataInputID = TestDataInputId
+    $('#HRDTTestDataInputIDShowProfile').val(TestDataInputID)
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'ShowHRDTDischargeProfileModal',
+            TestDataInputID:TestDataInputID
+        },
+        success: function (data) {
+            var result = JSON.parse(data);
+            if(result ==1){
+                $('#HRDTDischargeProfile').modal('show')
+            }
+            else{
+                Swal.fire('Info', 'Please provide the required test details above.', 'info');
+            }
+        }
+    });
+
+}
+
+$('#HRDTDischargeProfileBtnSave').on('click', function(e){
+    e.preventDefault()
+    // alert('hello')
+    var TestDataInputId = $('#HRDTTestDataInputIDShowProfile').val()
+    var DischargeCurrent = $('#HRDTCurrentShowProfiles').val()
+    // var hours = parseInt($('#hour-icon').val()) || 0
+    // var minutes = parseInt($('#minutes-icon').val()) || 0
+    var seconds = parseInt($('#seconds-icon').val()) || 0
+    // var TotalMinutes = hours * 60 + minutes + seconds / 60;
+
+    console.log(TestDataInputId, DischargeCurrent, seconds)
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'DischargeProfileData',
+            TestDataInputId:TestDataInputId,
+            DischargeCurrent:DischargeCurrent,
+            seconds:seconds
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                HRDTDischargeProfile_tbl()
+                $('#HRDTDischargeProfile').modal('hide')
+            }
+        }
+    });
+})
+
+// $('#hour-icon').keyup(function (e) { 
+//     e.preventDefault()
+//     var hours = parseInt($(this).val()) || 0
+//     var minutes = parseInt($('#minutes-icon').val()) || 0
+//     var seconds = parseInt($('#seconds-icon').val()) || 0
+//     var TotalMinutes = hours * 60 + minutes + seconds / 60;
+
+//     $('#ComputedHRDTMinutes').val(TotalMinutes.toFixed(2))
+// });
+
+// $('#minutes-icon').keyup(function (e) { 
+//     e.preventDefault()
+//     var hours = parseInt($('#hour-icon').val()) || 0
+//     var minutes = parseInt($(this).val()) || 0
+//     var seconds = parseInt($('#seconds-icon').val()) || 0
+//     var TotalMinutes = hours * 60 + minutes + seconds / 60;
+
+//     $('#ComputedHRDTMinutes').val(TotalMinutes.toFixed(2))
+// });
+
+// $('#seconds-icon').keyup(function (e) { 
+//     e.preventDefault()
+//     var hours = parseInt($('#hour-icon').val()) || 0
+//     var minutes = parseInt($('#minutes-icon').val()) || 0
+//     var seconds = parseInt($(this).val()) || 0
+//     var TotalMinutes = hours * 60 + minutes + seconds / 60;
+
+//     $('#ComputedHRDTMinutes').val(TotalMinutes.toFixed(2))
+// });
+
+function HRDTDischargeProfile_tbl(){
+    var TestDataInputId = $('#TestDataInputiID').val()
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'HRDTDichargeProfileTbl',
+            TestDataInputId:TestDataInputId
+        },
+        success: function (data) {
+            $('#HRDTDischargeProfile_tbl').html(data)
         }
     });
 }
 
-//HRDT Forms Modal Discharge Profile
-$('#ShowProfileBtn').on('click', function(){
-    $('#HRDTDischargeProfile').modal('show')
+function HRDTTestResultModalBtn(TestDataInputId){
+    var TestDataInputID = TestDataInputId
+    $('#HRDTTestDataInputIDShowProfile').val(TestDataInputID)
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'ShowHRDTTestResultModal',
+            TestDataInputID:TestDataInputID
+        },
+        success: function (data) {
+            var result = JSON.parse(data);
+            if(result ==1){
+                $('#HRDTTestResultForm').modal('show')
+            }
+            else{
+                Swal.fire('Info', 'Please provide the required test details above.', 'info');
+            }
+        }
+    });
+}
+
+$('#TestResultBtnSave').on('click', function(e){
+    e.preventDefault()
+    // alert('hello')
+    var TestDataInputId = $('#HRDTTestDataInputIDShowProfile').val()
+    var Voltage = $('#voltage-icon').val()
+    var Seconds = $('#time-icon').val()
+
+    console.log(TestDataInputId, Voltage, Seconds)
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'TestResultData',
+            TestDataInputId:TestDataInputId,
+            Voltage:Voltage,
+            Seconds:Seconds
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                HRDTTestResult_tbl()
+                $('#HRDTTestResultForm').modal('hide')
+            }
+        }
+    });
 })
 
-$('#HRDTTestResultBtn').on('click', function(){
-    $('#HRDTTestResultForm').modal('show')
-})
-//HRDT Forms Modal Discharge Profile End
+function HRDTTestResult_tbl(){
+    var TestDataInputId = $('#TestDataInputiID').val()
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'HRDTTestResultTbl',
+            TestDataInputId:TestDataInputId
+        },
+        success: function (data) {
+            $('#HRDTTestResult_tbl').html(data)
+        }
+    });
+}
+
+//HRDT Forms Modal Discharge Profile and TestResult End
 
 function VTTestForm(sampleID, currentTest, testTableID, formCatID, formTitleText, testSampleTxt, formTestDate){
     var sampleId = sampleID

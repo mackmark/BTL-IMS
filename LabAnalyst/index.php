@@ -1775,14 +1775,14 @@
                                                 </div>
                                                 
                                                 <div id="CapacityApprovalDiv">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                         <span class="d-none d-sm-block">Close</span>
                                                     </button>
                                                     <button type="button" class="btn btn-primary ml-1" id="ReviewCapacityTestForm">
                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                         <span class="d-none d-sm-block">Approve</span>
-                                                    </button>
+                                                    </button> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1814,208 +1814,12 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="container testFormDivHRDT">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Battery No.</label>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <input type="text" id="TestDataBatNoHRDT" class="form-control font-bold" name="TestDataBatNo"
-                                                                        disabled>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Testing Date</label>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <input type="text" id="TestDataTestDateHRDT" class="form-control font-bold" name="TestDataTestDate"
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mt-4">
-                                                        <div class="col-lg-6">
-                                                            <h6 class="text-center">Test Parameters and Equipment</h6>
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Test Type</label>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <input type="text" id="TestDataTestTypeHRDT" class="form-control" name="TestDataTestType"
-                                                                        disabled>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Cycle No.</label>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
-                                                                        disabled value="1">
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <label>Equipment No.</label>
-                                                                </div>
-                                                                <div class="col-md-5 form-group">
-                                                                    <input type="text" id="TestDataEqipment" class="form-control" name="TestDataEqipment">
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <label class="superscript">Battery temp., ºC <span>1</span></label>
-                                                                </div>
-                                                                <div class="col-md-5 form-group">
-                                                                    <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo">
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h6 class="text-center">Pre-Test Measurements</h6>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>OCV, V</label>
-                                                                </div>
-                                                                <div class="col-md-5 form-group">
-                                                                    <input type="number" id="TestDataDischargeA" class="form-control" name="TestDataDischargeA"
-                                                                        placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>Midtronics CCA, A</label>
-                                                                </div>
-                                                                <div class="col-md-5 form-group">
-                                                                    <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
-                                                                        placeholder="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>IR, mΩ</label>
-                                                                </div>
-                                                                <div class="col-md-5 form-group">
-                                                                    <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
-                                                                        placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="d-flex justify-content-between mb-1">
-                                                                <div>
-                                                                    <h6 class="text-center float-start">Discharge Profile</h6>
-                                                                </div>
-                                                                <div>
-                                                                    <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowProfileBtn"><i class="fa fa-plus-circle"></i></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="table-responsive">
-                                                                <table class="table table-bordered mb-0" id="initialMeasureTbl">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th style='white-space:nowrap;'>Step</th>
-                                                                            <th style='white-space:nowrap;'>Discharge Current, A</th>
-                                                                            <th style='white-space:nowrap;'>Time, s</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="d-flex justify-content-between mb-1">
-                                                                <div>
-                                                                    <h6 class="text-center float-start">Test Results</h6>
-                                                                </div>
-                                                                <div>
-                                                                    <button type="button" class="btn btn-outline-primary btn-sm float-end"><i class="fa fa-plus-circle" id="HRDTTestResultBtn"></i></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="table-responsive">
-                                                                <table class="table table-bordered mb-0" id="initialMeasureTbl">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th style='white-space:nowrap;'>Time, s</th>
-                                                                            <th style='white-space:nowrap;'>Battery Voltage, V</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div class="row mt-3">
-                                                                <div class="col-md-1"></div>
-                                                                <div class="col-md-5">
-                                                                    <label>Data File Name</label>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
-                                                                        placeholder="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     
-                                                    <div class="mt-4">
-                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">*</span> The battery temperature should be taken from the electrolyte temperature of the middle cell. If the electrolyte is not accessible, it can be assumed that the battery temperature will be the same as the freezer temperature 24 hrs after placing the battery inside the freezer.</p>
-                                                    </div>
-                                                    
-                                                    <div class="row mt-5">
-                                                        <div class="col-md-12">
-                                                            <label>Prepared by: </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
-                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
-                                                            <label >Leomar Unica  </label>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 
                                             </div>
-                                            <div class="container text-center">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    <i class="bx bx-x d-block d-sm-none"></i>
-                                                    <span class="d-none d-sm-block">Close</span>
-                                                </button>
-                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
-                                                    <i class="bx bx-check d-block d-sm-none"></i>
-                                                    <span class="d-none d-sm-block">Submit</span>
-                                                </button>
+                                            <div class="container text-center" id="HRDTActionBtn">
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -2685,7 +2489,7 @@
 
                         <!--HRDT Modal forms -->
                         <div class="modal fade text-left" id="HRDTDischargeProfile" tabindex="-1" role="dialog"
-                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            aria-labelledby="HRDTDischargeProfile" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-md"
                                 role="document">
                                 <div class="modal-content">
@@ -2703,15 +2507,16 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
+                                                <input type="hidden" id="HRDTTestDataInputIDShowProfile">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <div class="form-group has-icon-left">
-                                                                    <label for="current-icon">Discharge Current, A</label>
+                                                                    <label for="HRDTCurrentShowProfiles">Discharge Current, A</label>
                                                                     <div class="position-relative">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Discharge Current" id="current-icon">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="Discharge Current" id="HRDTCurrentShowProfiles">
                                                                         <div class="form-control-icon">
                                                                             <i class="bi bi-lightning-charge-fill"></i>
                                                                         </div>
@@ -2719,18 +2524,64 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-12">
-
                                                                 <div class="form-group has-icon-left">
-                                                                    <label for="time-icon">Time, s</label>
+                                                                    <label for="seconds-icon">Seconds</label>
                                                                     <div class="position-relative">
-                                                                        <input type="text" class="form-control" placeholder="Time"
-                                                                            id="time-icon">
+                                                                        <input type="number" class="form-control" placeholder="ss"
+                                                                                id="seconds-icon">
                                                                         <div class="form-control-icon">
-                                                                            <i class="bi bi-alarm"></i>
+                                                                            <i class="bi bi-clock"></i>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <!-- <div class="form-group has-icon-left">
+                                                                    <div class="row">
+                                                                        <div class="col-4">
+                                                                            <label for="hour-icon">Hour</label>
+                                                                            <div class="position-relative">
+                                                                                <input type="number" class="form-control" placeholder="hh"
+                                                                                        id="hour-icon">
+                                                                                <div class="form-control-icon">
+                                                                                    <i class="bi bi-clock"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <label for="minutes-icon">Minutes</label>
+                                                                            <div class="position-relative">
+                                                                                <input type="number" class="form-control" placeholder="mm"
+                                                                                        id="minutes-icon">
+                                                                                <div class="form-control-icon">
+                                                                                    <i class="bi bi-clock"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <label for="seconds-icon">Seconds</label>
+                                                                            <div class="position-relative">
+                                                                                <input type="number" class="form-control" placeholder="ss"
+                                                                                        id="seconds-icon">
+                                                                                <div class="form-control-icon">
+                                                                                    <i class="bi bi-clock"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div> -->
                                                             </div>
+                                                            <!-- <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="ComputedHRDTMinutes">Computed Minutes</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="Calculated Minutes" id="ComputedHRDTMinutes" style="border:2px solid grey; font-weight:bold;" disabled>
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calculator"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </form>
@@ -2743,7 +2594,7 @@
                                                 <i class="bx bx-x d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Close</span>
                                             </button>
-                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                            <button type="button" class="btn btn-primary ml-1" id="HRDTDischargeProfileBtnSave">
                                                 <i class="bx bx-check d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Save</span>
                                             </button>
@@ -2754,7 +2605,7 @@
                         </div>
 
                         <div class="modal fade text-left" id="HRDTTestResultForm" tabindex="-1" role="dialog"
-                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            aria-labelledby="HRDTTestResultForm" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-md"
                                 role="document">
                                 <div class="modal-content">
@@ -2772,18 +2623,19 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
+                                                <input type="hidden" id="HRDTTestDataInputIDShowProfile">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">
 
                                                             <div class="col-12">
                                                                 <div class="form-group has-icon-left">
-                                                                    <label for="time-icon">Time, s</label>
+                                                                    <label for="VoltageSeconds-icon">Time, s</label>
                                                                     <div class="position-relative">
-                                                                        <input type="text" class="form-control" placeholder="Time"
+                                                                        <input type="text" class="form-control" placeholder="ss"
                                                                             id="time-icon">
                                                                         <div class="form-control-icon">
-                                                                            <i class="bi bi-alarm"></i>
+                                                                            <i class="bi bi-clock"></i>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2814,7 +2666,7 @@
                                                 <i class="bx bx-x d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Close</span>
                                             </button>
-                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                            <button type="button" class="btn btn-primary ml-1" id="TestResultBtnSave">
                                                 <i class="bx bx-check d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Save</span>
                                             </button>

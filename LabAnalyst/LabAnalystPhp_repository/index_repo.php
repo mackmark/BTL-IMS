@@ -1299,6 +1299,12 @@ if(isset($_POST['action'])){
                                             </div>
                                             ';
                                         }
+                                        else if($TestStatusID == 13){
+                                            $sub_array[] = '<div class="btn-group mb-0" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="TestDataInput('.$TestPTPScheduleID.', '.$TestSampleID.', \''.$currentTestForm.'\', '.$testTableID.', '.$formCategoryID.', \''.$TestSamplesNo.'\', '.$waterBathCellNoIDData.', '.$TestStatusID.', '.$haveRow.')" class="btn btn-sm icon btn-primary"><i class="bi bi-check2-circle"></i> '.$currentTestForm.'</button>
+                                            </div>
+                                            ';
+                                        }
                                         
                                     }
                                     else{
@@ -1362,6 +1368,12 @@ if(isset($_POST['action'])){
                                         else if($TestStatusID == 11){
                                             $sub_array[] = '<div class="btn-group mb-0" role="group" aria-label="Basic example">
                                             <button type="button" onclick="TestDataInput('.$TestPTPScheduleID.', '.$TestSampleID.', \''.$currentTestForm.'\', '.$testTableID.', '.$formCategoryID.', \''.$TestSamplesNo.'\', '.$waterBathCellNoIDData.', '.$TestStatusID.', '.$haveRow.')" class="btn btn-sm icon btn-primary"><i class="bi bi-check2-circle"></i> '.$currentTestForm.'</button>
+                                            </div>
+                                            ';
+                                        }
+                                        else if($TestStatusID == 13){
+                                            $sub_array[] = '<div class="btn-group mb-0" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="TestDataInput('.$TestPTPScheduleID.', '.$TestSampleID.', \''.$currentTestForm.'\', '.$testTableID.', '.$formCategoryID.', \''.$TestSamplesNo.'\', '.$waterBathCellNoIDData.', '.$TestStatusID.', '.$haveRow.')" class="btn btn-sm icon btn-secondary"><i class="bi bi-journal-plus"></i> '.$currentTestForm.'</button>
                                             </div>
                                             ';
                                         }
@@ -3302,7 +3314,7 @@ if(isset($_POST['action'])){
                         </div>
 
                         <div class="form-group mt-3 ">
-                            <label for="AllocationRemarks" class="form-label">Remarks</label>
+                            <label for="CapacityFormRemarks" class="form-label">Remarks</label>
                             <textarea class="form-control" id="CapacityFormRemarks" rows="3">For Review</textarea>
                         </div>
 
@@ -3501,516 +3513,652 @@ if(isset($_POST['action'])){
         $HaveRow = isset($_POST['HaveRow']) ? $_POST['HaveRow'] : 0;
         $output = '';
         $actionBtn = '';
-        // if($HaveRow !=0){
-        //     $sql = "select testData.TestDataInputID, details.DischargeCurrent, details.CuttOffV, PreTest.OCV, PreTest.CCA, PreTest.SG1 as preSG1, PreTest.SG2 as preSG2,
-        //     PostTest.DCHMins, PostTest.SG1 as postSG1, PostTest.SG2 as postSG2, testData.DataFileName, status.StatusID, status.Remarks
-        //     from TestDataInput_tbl testData
-        //     join CapacityTestDetails_tbl details ON testData.TestDataInputID = details.TestDataInputID
-        //     join CapacityPreTestMeasurement_tbl PreTest ON testData.TestDataInputID = PreTest.TestDataInputID
-        //     join CapacityPostTestMeasurement_tbl PostTest ON testData.TestDataInputID = PostTest.TestDataInputID
-        //     cross apply (
-        //         select top 1 StatusID, Remarks from TestDataStatus_tbl where TestDataInputID = testData.TestDataInputID order by DateCreated DESC
-        //     ) as status
-        //     where testData.TestPTPScheduleID = ".$ptpTestScheduleID." and testData.IsActive = 1 and testData.IsDeleted = 0 ";
-        //     $execute = odbc_exec($connServer, $sql);
-        //     if($execute){
-        //         $rowData = odbc_fetch_array($execute);
-        //         $TestDataInputID = $rowData['TestDataInputID'];
-        //         $DischargeA = $rowData['DischargeCurrent'];
-        //         $CutOffVoltage = $rowData['CuttOffV'];
-        //         $OCV = $rowData['OCV'];
-        //         $DischargeTime = $rowData['DCHMins'];
-        //         $MidtronicsCCA = $rowData['CCA'];
-        //         $AcidSG1C1 = $rowData['postSG1'];
-        //         $AcidSG1C2 = $rowData['postSG2'];
-        //         $AcidSG2C1 = $rowData['preSG1'];
-        //         $AcidSG2C2 = $rowData['preSG2'];
-        //         $dataFileName = $rowData['DataFileName'];
-        //         $StatusID = $rowData['StatusID'];
-        //         $StatusRemarks = $rowData['Remarks'];
-        //         $output .= '<div class="row">
-        //                         <div class="col-lg-6">
-        //                             <div class="row">
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                                 <div class="col-md-4">
-        //                                     <label>Battery No.</label>
-        //                                 </div>
-        //                                 <div class="col-md-6 form-group">
-        //                                     <input type="text" id="TestDataBatNo" class="form-control font-bold" name="TestDataBatNo" value="'.$testSampleSysText.'"
-        //                                         disabled>
-        //                                 </div>
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                         <div class="col-lg-6">
-        //                             <div class="row">
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                                 <div class="col-md-4">
-        //                                     <label>Testing Date</label>
-        //                                 </div>
-        //                                 <div class="col-md-6 form-group">
-        //                                     <input type="text" id="TestDataTestDate" class="form-control font-bold" name="TestDataTestDate" value="'.$currentDate.'"
-        //                                         disabled>
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                     </div>
+        $TestDataInputID = 0;
+        if($HaveRow !=0){
+            $sql = "select testData.TestDataInputID, testDetail.EquipmentNo, testDetail.BatteryTemp, testDetail.OCV, testDetail.CCA, testDetail.IR, testData.DataFileName  from TestDataInput_tbl testData
+            cross apply (
+                select Top 1 * from HRDTestDetails_tbl details where testData.TestDataInputID = details.TestDataInputID and details.IsActive = 1 and details.IsDeleted = 0 order by details.DateCreated DESC
+            ) as testDetail
+            where testData.TestPTPScheduleID =  ".$ptpTestScheduleID." and testData.IsActive = 1 and testData.IsDeleted = 0 ";
+            $execute = odbc_exec($connServer, $sql);
+            if($execute){
+                $rowData = odbc_fetch_array($execute);
+                $TestDataInputID = $rowData['TestDataInputID'];
+                $EquipmentNo = $rowData['EquipmentNo'];
+                $BatteryTemp = $rowData['BatteryTemp'];
+                $OCV = $rowData['OCV'];
+                $MidtronicsCCA = $rowData['CCA'];
+                $IR = $rowData['IR'];
+                $dataFileName = $rowData['DataFileName'];
+                $output .= '<div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Battery No.</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataBatNoHRDT" class="form-control font-bold" name="TestDataBatNo" value="'.$testSampleSysText.'"
+                                            disabled>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Testing Date</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataTestDateHRDT" class="form-control font-bold" name="TestDataTestDate" value="'.$currentDate.'"
+                                            disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        //                     <div class="row mt-4">
-        //                         <div class="col-lg-6">
-        //                             <h6 class="text-center">Capacity Test</h6>
-        //                             <div class="row">
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                                 <div class="col-md-4">
-        //                                     <label>Test Type</label>
-        //                                 </div>
-        //                                 <div class="col-md-6 form-group">
-        //                                     <input type="hidden" id="ptpTestScheduleID" value="'.$ptpTestScheduleID.'">
+                        <div class="row mt-4">
+                            <div class="col-lg-6">
+                                <h6 class="text-center">Test Parameters and Equipment</h6>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Test Type</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
 
-        //                                     <input type="hidden" id="formCategoryId" value="'.$formCategoryId.'">
+                                        <input type="hidden" id="TestDataInputiID" value="'.$TestDataInputID.'">
 
-        //                                     <input type="hidden" id="testTableId" value="'.$testTableId.'">
+                                        <input type="hidden" id="ptpTestScheduleID" value="'.$ptpTestScheduleID.'">
 
-        //                                     <input type="hidden" id="sampleId" value="'.$sampleId.'">
+                                        <input type="hidden" id="formCategoryId" value="'.$formCategoryId.'">
 
-        //                                     <input type="hidden" id="TestDataStatusID" value="'.$TestStatusID.'">
+                                        <input type="hidden" id="testTableId" value="'.$testTableId.'">
 
-        //                                     <input type="text" id="TestDataTestType" class="form-control" name="TestDataTestType" value="'.$currentTestTxt.'"
-        //                                         disabled>
-        //                                 </div>
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                             </div>
-        //                             <div class="row">
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                                 <div class="col-md-4">
-        //                                     <label>Cycle No.</label>
-        //                                 </div>
-        //                                 <div class="col-md-6 form-group">
-        //                                     <input type="hidden" id="TestDataCycleNoData" class="form-control" value="1">
+                                        <input type="hidden" id="sampleId" value="'.$sampleId.'">
 
-        //                                     <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
-        //                                         disabled value="1">
-        //                                 </div>
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                             </div>
-        //                             <div class="row">
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                                 <div class="col-md-5">
-        //                                     <label>Equipment No.</label>
-        //                                 </div>
-        //                                 <div class="col-md-5 form-group">
-        //                                     <input type="hidden" id="TestDataEquipmentCapacityID" name="TestDataEquipmentCapacity">
+                                        <input type="hidden" id="TestDataStatusID" value="'.$TestStatusID.'">
 
-        //                                     <input type="text" id="TestDataEquipmentCapacity" class="form-control" name="TestDataEquipmentCapacity"
-        //                                         disabled>
-        //                                 </div>
-        //                                 <div class="col-md-1">
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                         <div class="col-lg-6">
-        //                             <h6 class="text-center">Test Parameters</h6>
-        //                             <div class="row">
-        //                                 <div class="col-md-7">
-        //                                     <label>Discharge current, A</label>
-        //                                 </div>
-        //                                 <div class="col-md-5 form-group">
-        //                                     <input type="number" id="TestDataDischargeA" class="form-control" name="TestDataDischargeA"
-        //                                         placeholder="" value="'.$DischargeA.'">
-        //                                 </div>
-        //                             </div>
-        //                             <div class="row">
-        //                                 <div class="col-md-7">
-        //                                     <label>Cut-off voltage, V</label>
-        //                                 </div>
-        //                                 <div class="col-md-5 form-group">
-        //                                     <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
-        //                                         placeholder="" value="'.$CutOffVoltage.'">
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                     </div>
-                            
-        //                     <div class="table-responsive mt-4">
-        //                         <table class="table table-bordered mb-0" id="initialMeasureTbl">
-        //                             <thead>
-        //                                 <tr>
-        //                                     <th colspan="3" style="white-space:nowrap;">Pre-test Measurements</th>
-        //                                     <th colspan="3" style="white-space:nowrap;">Post-test Measurements</th>
-        //                                 </tr>
-        //                             </thead>
-        //                             <tbody>
-        //                                 <tr>
-        //                                     <td class="text-bold-500" style="white-space:nowrap;">
-        //                                         <h6>OCV, V.</h6>
-        //                                     </td>
-        //                                     <td colspan="2">
-        //                                         <input type="text" id="PreCapacityOCV" class="form-control" name="PreCapacityOCV"
-        //                                         placeholder="" value="'.$OCV.'">
-        //                                     </td>
-        //                                     <td class="text-bold-500" style="white-space:nowrap;">
-        //                                         <h6>Discharge time, mins</h6>
-        //                                     </td>
-        //                                     <td colspan="2">
-        //                                         <input type="text" id="PostCapacityDischargeTime" class="form-control" name="PostCapacityDischargeTime"
-        //                                         placeholder="" value="'.$DischargeTime.'">
-        //                                     </td>
-        //                                 </tr>
-        //                                 <tr>
-        //                                     <td class="text-bold-500" style="white-space:nowrap;"><h6>Midtronics CCA, A</h6>
-        //                                     </td>
-        //                                     <td colspan="2">
-        //                                         <input type="text" id="CapacityCCA" class="form-control" name="CapacityCCA"
-        //                                         placeholder="" value="'.$MidtronicsCCA.'">
-        //                                     </td>
-        //                                     <td class="text-bold-500" style="white-space:nowrap;"><h6 class="superscript">Acid SG/ Temp, ºC <span>1, 2</span></h6>
-        //                                     </td>
-        //                                     <td>
-        //                                         <input type="text" id="Capacity1SG1" class="form-control" name="Capacity1SG1"
-        //                                         placeholder="" value="'.$AcidSG1C1.'">
-        //                                     </td>
-        //                                     <td>
-        //                                         <input type="text" id="Capacity1SG2" class="form-control" name="Capacity1SG2"
-        //                                         placeholder="" value="'.$AcidSG1C2.'">
-        //                                     </td>
-        //                                 </tr>
-        //                                 <tr>
-        //                                     <td class="text-bold-500" style="white-space:nowrap;"><h6 class="superscript">Acid SG/ Temp, ºC <span>1</span> </h6>
-        //                                     </td>
-        //                                     <td>
-        //                                         <input type="text" id="Capacity2SG1" class="form-control" name="Capacity2SG1"
-        //                                         placeholder="" value="'.$AcidSG2C1.'">
-        //                                     </td>
-        //                                     <td>
-        //                                         <input type="text" id="Capacity2SG2" class="form-control" name="Capacity2SG2"
-        //                                         placeholder="" value="'.$AcidSG2C2.'">
-        //                                     </td>
+                                        <input type="text" id="TestDataTestTypeHRDT" class="form-control" name="TestDataTestType" value="'.$currentTestTxt.'"
+                                            disabled>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Cycle No.</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
+                                            disabled value="1">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Equipment No.</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="text" id="HRDTTestDataEqipment" class="form-control" name="HRDTTestDataEqipment" value="'.$EquipmentNo.'">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="superscript">Battery temp., ºC <span>1</span></label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTBatTemp" class="form-control" name="HRDTBatTemp" value="'.$BatteryTemp.'">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h6 class="text-center">Pre-Test Measurements</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>OCV, V</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTOCV" class="form-control" name="HRDTOCV"
+                                            placeholder="" value="'.$OCV.'">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Midtronics CCA, A</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTCCA" class="form-control" name="HRDTCCA"
+                                            placeholder="" value="'.$MidtronicsCCA.'">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>IR, mΩ</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTIR" class="form-control" name="HRDTIR"
+                                            placeholder="" value="'.$IR.'">
+                                    </div>
+                                </div>
+                                <div class="row mt">
+                                    <div class="col-md-6">
+                                        <label>Data File Name</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="text" id="HRDTDataFileName" class="form-control" name="HRDTDataFileName"
+                                            placeholder="" value="'.$dataFileName.'">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        
+                                    </div>
+                                    <div class="col-md-5 " id="DetailBtn">
+                                        <button type="button" class="btn-block btn btn-sm btn-secondary" id="HRDTEditDetailsBtn" onclick="HRDTEditDetailBtn('.$formCategoryId.', '.$sampleId.', '.$testTableId.', '.$ptpTestScheduleID.')">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <div>
+                                        <h6 class="text-center float-start">Discharge Profile</h6>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowProfileBtn" onclick="ShowProfileModalBtn('.$TestDataInputID.')"><i class="fa fa-plus-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive shadow-sm bg-white p-0 rounded mb-0">
+                                    <table class="table table-bordered" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;">Step</th>
+                                                <th style="white-space:nowrap;">Discharge Current, A</th>
+                                                <th style="white-space:nowrap;">Time, s</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="HRDTDischargeProfile_tbl" >
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <div>
+                                        <h6 class="text-center float-start">Test Results</h6>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary btn-sm float-end" id="HRDTTestResultBtn" onclick="HRDTTestResultModalBtn('.$TestDataInputID.')"><i class="fa fa-plus-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive shadow-sm bg-white p-0 rounded mb-0">
+                                    <table class="table table-hover" id="initialMeasureTbl">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;">Time, s</th>
+                                                <th style="white-space:nowrap;">Battery Voltage, V</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="HRDTTestResult_tbl">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
-        //                                     <td class="text-bold-500" style="white-space:nowrap;"><h6>Data file name </h6>
-        //                                     </td>
-        //                                     <td colspan="2">
-        //                                         <input type="text" id="CapacityDataFileName" class="form-control" name="CapacityDataFileName"
-        //                                         placeholder="" value="'.$dataFileName.'">
-        //                                     </td>
-        //                                 </tr>
-        //                             </tbody>
-        //                         </table>
-        //                     </div>
-
-        //                     <div class="form-group ">
-        //                         <div class="divider divider-center p-0">
-        //                             <div class="divider-text text-primary">REMARKS HISTORY</div>
-        //                         </div>
-        //                         <div class="card-body">
-        //                             <p class="card-text">
-        //                                 <div class="avatar bg-warning me-3">
-        //                                     <span class="avatar-content">MC</span>
-        //                                 </div>
-        //                                 <div class="badge bg-light-primary p-2" style="text-align: left;font-weight:bold;font-size:12px;">
-        //                                     <span style="font-size:11px;font-weight:normal;">Mark Cruz | Laboratory Analyst, Thursday 9:03 AM</span> </br>
-        //                                     <hr style="padding-top: 3px;padding-bottom: 7px;margin: 0;">
-        //                                     For Review
-        //                                 </div>
-        //                             </p>
-        //                             <p>
-        //                                 <button class="btn btn-outline-primary btn-sm float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        //                                     View more 
-        //                                 </button>
-        //                             </p>
-        //                             <div class="collapse" id="collapseExample">
-        //                                 <div class="avatar bg-warning me-3">
-        //                                     <span class="avatar-content">MC</span>
-        //                                 </div>
-        //                                 <div class="badge bg-light-primary p-2 mb-3" style="text-align: left;font-weight:bold;font-size:12px;">
-        //                                     <span style="font-size:11px;font-weight:normal;">Mark Cruz | Laboratory Analyst, Thursday 9:03 AM</span> </br>
-        //                                     <hr style="padding-top: 3px;padding-bottom: 7px;margin: 0;">
-        //                                     For Review
-        //                                 </div>
-                                                
-        //                                 </br>
-        //                             </div>
-        //                         </div>
-                                
-        //                         <label for="AllocationRemarks" class="form-label">Remarks</label>
-        //                         <textarea class="form-control" id="CapacityFormRemarks" rows="2"></textarea>
-        //                     </div>
-
-        //                     <div class="mt-4">
-        //                         <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Measure the SG of the middle cell. If SG is measured using a float hydrometer, measure the electrolyte temperature as well. No need to do this if a digital hydrometer is used as its measurement is already temperature-compensated.</p>
-
-        //                         <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For RC test, electrolyte temperature after testing should be measured regardless of type hydrometer used.</p>
-        //                     </div>
-                            
-        //                     <div class="row mt-5">
-        //                         <div class="col-md-12">
-        //                             <label>Prepared by: </label>
-        //                         </div>
-        //                     </div>
-                            
-        //                     <div class="row text-center" style="position:relative; margin-left:0.5px;">
-        //                         <div class="col-md-4" style="border-bottom: solid 1px black">
-        //                             <label >Leomar Unica  </label>
-        //                         </div>
-        //                     </div>';
-
-        //                     if($StatusID==9){
-        //                         $actionBtn = '<button type="button" class="btn btn-warning ml-1" id="RetestCapacityBtn">
-        //                                         <i class="bx bx-check d-block d-sm-none"></i>
-        //                                         <span class="d-none d-sm-block">Retest</span>
-        //                                     </button>
-        //                                     <button type="button" class="btn btn-info ml-1" id="ReviewCapacityBtn" onclick="ReviewCapacityBtn('.$TestDataInputID.')">
-        //                                         <i class="bx bx-check d-block d-sm-none"></i>
-        //                                         <span class="d-none d-sm-block">Reviewed</span>
-        //                                     </button>';
-        //                     }
-        //                     else if($StatusID==10){
-        //                         $actionBtn = '<button type="button" class="btn btn-secondary"   data-bs-dismiss="modal">
-        //                                         <i class="bx bx-x d-block d-sm-none"></i>
-        //                                         <span class="d-none d-sm-block">Close</span>
-        //                                     </button>
-        //                                     <button type="button" class="btn btn-warning ml-1" id="SubmitRetestFormBtn">
-        //                                         <i class="bx bx-check d-block d-sm-none"></i>
-        //                                         <span class="d-none d-sm-block">Submit</span>
-        //                                     </button>';
-        //                     }
-        //                     else if($StatusID==11){
-        //                         $actionBtn = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        //                                             <i class="bx bx-x d-block d-sm-none"></i>
-        //                                             <span class="d-none d-sm-block">Close</span>
-        //                                         </button>
-        //                                         <button type="button" class="btn btn-primary ml-1" id="ApprovedTestFormBtn" onclick="ApprovalCapacityBtn('.$TestDataInputID.', '.$ptpTestScheduleID.')">
-        //                                             <i class="bx bx-check d-block d-sm-none"></i>
-        //                                             <span class="d-none d-sm-block">Approved</span>
-        //                                         </button>';
-        //                     }
-        //     }
-
-        // }
-        // else{
-        //     $output .= '<div class="row">
-        //                     <div class="col-lg-6">
-        //                         <div class="row">
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                             <div class="col-md-4">
-        //                                 <label>Battery No.</label>
-        //                             </div>
-        //                             <div class="col-md-6 form-group">
-        //                                 <input type="text" id="TestDataBatNo" class="form-control font-bold" name="TestDataBatNo" value="'.$testSampleSysText.'"
-        //                                     disabled>
-        //                             </div>
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                     <div class="col-lg-6">
-        //                         <div class="row">
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                             <div class="col-md-4">
-        //                                 <label>Testing Date</label>
-        //                             </div>
-        //                             <div class="col-md-6 form-group">
-        //                                 <input type="text" id="TestDataTestDate" class="form-control font-bold" name="TestDataTestDate" value="'.$currentDate.'"
-        //                                     disabled>
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-
-        //                 <div class="row mt-4">
-        //                     <div class="col-lg-6">
-        //                         <h6 class="text-center">Capacity Test</h6>
-        //                         <div class="row">
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                             <div class="col-md-4">
-        //                                 <label>Test Type</label>
-        //                             </div>
-        //                             <div class="col-md-6 form-group">
-        //                                 <input type="hidden" id="ptpTestScheduleID" value="'.$ptpTestScheduleID.'">
-
-        //                                 <input type="hidden" id="formCategoryId" value="'.$formCategoryId.'">
-
-        //                                 <input type="hidden" id="testTableId" value="'.$testTableId.'">
-
-        //                                 <input type="hidden" id="sampleId" value="'.$sampleId.'">
-
-        //                                 <input type="hidden" id="TestDataStatusID" value="'.$TestStatusID.'">
-
-        //                                 <input type="text" id="TestDataTestType" class="form-control" name="TestDataTestType" value="'.$currentTestTxt.'"
-        //                                     disabled>
-        //                             </div>
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                         </div>
-        //                         <div class="row">
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                             <div class="col-md-4">
-        //                                 <label>Cycle No.</label>
-        //                             </div>
-        //                             <div class="col-md-6 form-group">
-        //                                 <input type="hidden" id="TestDataCycleNoData" class="form-control" value="1">
-
-        //                                 <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
-        //                                     disabled value="1">
-        //                             </div>
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                         </div>
-        //                         <div class="row">
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                             <div class="col-md-5">
-        //                                 <label>Equipment No.</label>
-        //                             </div>
-        //                             <div class="col-md-5 form-group">
-        //                                 <input type="hidden" id="TestDataEquipmentCapacityID" name="TestDataEquipmentCapacity">
-
-        //                                 <input type="text" id="TestDataEquipmentCapacity" class="form-control" name="TestDataEquipmentCapacity"
-        //                                     disabled>
-        //                             </div>
-        //                             <div class="col-md-1">
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                     <div class="col-lg-6">
-        //                         <h6 class="text-center">Test Parameters</h6>
-        //                         <div class="row">
-        //                             <div class="col-md-7">
-        //                                 <label>Discharge current, A</label>
-        //                             </div>
-        //                             <div class="col-md-5 form-group">
-        //                                 <input type="number" id="TestDataDischargeA" class="form-control" name="TestDataDischargeA"
-        //                                     placeholder="">
-        //                             </div>
-        //                         </div>
-        //                         <div class="row">
-        //                             <div class="col-md-7">
-        //                                 <label>Cut-off voltage, V</label>
-        //                             </div>
-        //                             <div class="col-md-5 form-group">
-        //                                 <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
-        //                                     placeholder="">
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </div>
+                        <div class="form-group mt-3 ">
+                            <label for="HRDTFormRemarks" class="form-label">Remarks</label>
+                            <textarea class="form-control" id="HRDTFormRemarks" rows="2">For Review</textarea>
+                        </div>
                         
-        //                 <div class="table-responsive mt-4">
-        //                     <table class="table table-bordered mb-0" id="initialMeasureTbl">
-        //                         <thead>
-        //                             <tr>
-        //                                 <th colspan="3" style="white-space:nowrap;">Pre-test Measurements</th>
-        //                                 <th colspan="3" style="white-space:nowrap;">Post-test Measurements</th>
-        //                             </tr>
-        //                         </thead>
-        //                         <tbody>
-        //                             <tr>
-        //                                 <td class="text-bold-500" style="white-space:nowrap;">
-        //                                     <h6>OCV, V.</h6>
-        //                                 </td>
-        //                                 <td colspan="2">
-        //                                     <input type="text" id="PreCapacityOCV" class="form-control" name="PreCapacityOCV"
-        //                                     placeholder="">
-        //                                 </td>
-        //                                 <td class="text-bold-500" style="white-space:nowrap;">
-        //                                     <h6>Discharge time, mins</h6>
-        //                                 </td>
-        //                                 <td colspan="2">
-        //                                     <input type="text" id="PostCapacityDischargeTime" class="form-control" name="PostCapacityDischargeTime"
-        //                                     placeholder="">
-        //                                 </td>
-        //                             </tr>
-        //                             <tr>
-        //                                 <td class="text-bold-500" style="white-space:nowrap;"><h6>Midtronics CCA, A</h6>
-        //                                 </td>
-        //                                 <td colspan="2">
-        //                                     <input type="text" id="CapacityCCA" class="form-control" name="CapacityCCA"
-        //                                     placeholder="">
-        //                                 </td>
-        //                                 <td class="text-bold-500" style="white-space:nowrap;"><h6 class="superscript">Acid SG/ Temp, ºC <span>1, 2</span></h6>
-        //                                 </td>
-        //                                 <td>
-        //                                     <input type="text" id="Capacity1SG1" class="form-control" name="Capacity1SG1"
-        //                                     placeholder="">
-        //                                 </td>
-        //                                 <td>
-        //                                     <input type="text" id="Capacity1SG2" class="form-control" name="Capacity1SG2"
-        //                                     placeholder="">
-        //                                 </td>
-        //                             </tr>
-        //                             <tr>
-        //                                 <td class="text-bold-500" style="white-space:nowrap;"><h6 class="superscript">Acid SG/ Temp, ºC <span>1</span> </h6>
-        //                                 </td>
-        //                                 <td>
-        //                                     <input type="text" id="Capacity2SG1" class="form-control" name="Capacity2SG1"
-        //                                     placeholder="">
-        //                                 </td>
-        //                                 <td>
-        //                                     <input type="text" id="Capacity2SG2" class="form-control" name="Capacity2SG2"
-        //                                     placeholder="">
-        //                                 </td>
-
-        //                                 <td class="text-bold-500" style="white-space:nowrap;"><h6>Data file name </h6>
-        //                                 </td>
-        //                                 <td colspan="2">
-        //                                     <input type="text" id="CapacityDataFileName" class="form-control" name="CapacityDataFileName"
-        //                                     placeholder="">
-        //                                 </td>
-        //                             </tr>
-        //                         </tbody>
-        //                     </table>
-        //                 </div>
-
-        //                 <div class="form-group mt-3 ">
-        //                     <label for="AllocationRemarks" class="form-label">Remarks</label>
-        //                     <textarea class="form-control" id="CapacityFormRemarks" rows="3">For Review</textarea>
-        //                 </div>
-
-        //                 <div class="mt-4">
-        //                     <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Measure the SG of the middle cell. If SG is measured using a float hydrometer, measure the electrolyte temperature as well. No need to do this if a digital hydrometer is used as its measurement is already temperature-compensated.</p>
-
-        //                     <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For RC test, electrolyte temperature after testing should be measured regardless of type hydrometer used.</p>
-        //                 </div>
+                        <div class="mt-4">
+                            <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">*</span> The battery temperature should be taken from the electrolyte temperature of the middle cell. If the electrolyte is not accessible, it can be assumed that the battery temperature will be the same as the freezer temperature 24 hrs after placing the battery inside the freezer.</p>
+                        </div>
                         
-        //                 <div class="row mt-5">
-        //                     <div class="col-md-12">
-        //                         <label>Prepared by: </label>
-        //                     </div>
-        //                 </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12">
+                                <label>Prepared by: </label>
+                            </div>
+                        </div>
                         
-        //                 <div class="row text-center" style="position:relative; margin-left:0.5px;">
-        //                     <div class="col-md-4" style="border-bottom: solid 1px black">
-        //                         <label >Leomar Unica  </label>
-        //                     </div>
-        //                 </div>';
+                        <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                            <div class="col-md-4" style="border-bottom: solid 1px black">
+                                <label >Leomar Unica  </label>
+                            </div>
+                        </div>';
 
-        //                 $actionBtn = '<button type="button" class="btn btn-secondary"   data-bs-dismiss="modal">
-        //                     <i class="bx bx-x d-block d-sm-none"></i>
-        //                     <span class="d-none d-sm-block">Close</span>
-        //                 </button>
-        //                 <button type="button" class="btn btn-primary ml-1" id="SubmitCapacityTestForm" onclick="SubmitCapacity()">
-        //                     <i class="bx bx-check d-block d-sm-none"></i>
-        //                     <span class="d-none d-sm-block">Submit</span>
-        //                 </button>';
-        // }
+                        $actionBtn = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Close</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Submit</span>
+                                    </button>';
+            }
+        }
+        else{
+            $output .= '<div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Battery No.</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataBatNoHRDT" class="form-control font-bold" name="TestDataBatNo" value="'.$testSampleSysText.'"
+                                            disabled>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Testing Date</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataTestDateHRDT" class="form-control font-bold" name="TestDataTestDate" value="'.$currentDate.'"
+                                            disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        // $arr = array(
-        //     'content' => $output,
-        //     'actionBtn' => $actionBtn
-        // );
+                        <div class="row mt-4">
+                            <div class="col-lg-6">
+                                <h6 class="text-center">Test Parameters and Equipment</h6>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Test Type</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
 
-        // echo json_encode($arr);
+                                        <input type="hidden" id="ptpTestScheduleID" value="'.$ptpTestScheduleID.'">
+
+                                        <input type="hidden" id="formCategoryId" value="'.$formCategoryId.'">
+
+                                        <input type="hidden" id="testTableId" value="'.$testTableId.'">
+
+                                        <input type="hidden" id="sampleId" value="'.$sampleId.'">
+
+                                        <input type="hidden" id="TestDataStatusID" value="'.$TestStatusID.'">
+
+                                        <input type="text" id="TestDataTestTypeHRDT" class="form-control" name="TestDataTestType" value="'.$currentTestTxt.'"
+                                            disabled>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Cycle No.</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
+                                            disabled value="1">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Equipment No.</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="text" id="HRDTTestDataEqipment" class="form-control" name="HRDTTestDataEqipment">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="superscript">Battery temp., ºC <span>1</span></label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTBatTemp" class="form-control" name="HRDTBatTemp">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h6 class="text-center">Pre-Test Measurements</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>OCV, V</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTOCV" class="form-control" name="HRDTOCV"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Midtronics CCA, A</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTCCA" class="form-control" name="HRDTCCA"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>IR, mΩ</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="number" id="HRDTIR" class="form-control" name="HRDTIR"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row mt">
+                                    <div class="col-md-6">
+                                        <label>Data File Name</label>
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <input type="text" id="HRDTDataFileName" class="form-control" name="HRDTDataFileName"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        
+                                    </div>
+                                    <div class="col-md-5 " id="DetailBtn">
+                                        <button type="button" class="btn-block btn btn-sm btn-primary" id="HRDTSaveDetailsBtn" onclick="HRDTSaveDetailBtn('.$formCategoryId.', '.$sampleId.', '.$testTableId.', '.$ptpTestScheduleID.')">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <div>
+                                        <h6 class="text-center float-start">Discharge Profile</h6>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowProfileBtn" onclick="ShowProfileModalBtn('.$TestDataInputID.')"><i class="fa fa-plus-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mb-0" id="initialMeasureTbl">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;">Step</th>
+                                                <th style="white-space:nowrap;">Discharge Current, A</th>
+                                                <th style="white-space:nowrap;">Time, s</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <div>
+                                        <h6 class="text-center float-start">Test Results</h6>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary btn-sm float-end"><i class="fa fa-plus-circle" id="HRDTTestResultBtn" onclick="HRDTTestResultModalBtn('.$TestDataInputID.')"></i></button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mb-0" id="initialMeasureTbl">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;">Time, s</th>
+                                                <th style="white-space:nowrap;">Battery Voltage, V</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3 ">
+                            <label for="HRDTFormRemarks" class="form-label">Remarks</label>
+                            <textarea class="form-control" id="HRDTFormRemarks" rows="2">For Review</textarea>
+                        </div>
+
+                        <div class="mt-4">
+                            <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">*</span> The battery temperature should be taken from the electrolyte temperature of the middle cell. If the electrolyte is not accessible, it can be assumed that the battery temperature will be the same as the freezer temperature 24 hrs after placing the battery inside the freezer.</p>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-md-12">
+                                <label>Prepared by: </label>
+                            </div>
+                        </div>
+                        
+                        <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                            <div class="col-md-4" style="border-bottom: solid 1px black">
+                                <label >Leomar Unica  </label>
+                            </div>
+                        </div>';
+
+                        $actionBtn = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Submit</span>
+                                        </button>';
+        }
+
+        $arr = array(
+            'content' => $output,
+            'actionBtn' => $actionBtn
+        );
+
+        echo json_encode($arr);
+    }
+
+    else if($_POST['action'] == 'HRDTSaveDetails'){
+        $formCategoryId = isset($_POST['formCategoryId']) ? $_POST['formCategoryId'] : 0;
+        $sampleId = isset($_POST['sampleId']) ? $_POST['sampleId'] : 0;
+        $testTableId = isset($_POST['testTableId']) ? $_POST['testTableId'] : 0;
+        $ptpTestScheduleId = isset($_POST['ptpTestScheduleId']) ? $_POST['ptpTestScheduleId'] : 0;
+        $EquipmentNo = isset($_POST['EquipmentNo']) ? $_POST['EquipmentNo'] : '';
+        $BatteryTemp = isset($_POST['BatteryTemp']) ? $_POST['BatteryTemp'] : 0;
+        $OCV = isset($_POST['OCV']) ? $_POST['OCV'] : 0;
+        $CCA = isset($_POST['CCA']) ? $_POST['CCA'] : 0;
+        $IR = isset($_POST['IR']) ? $_POST['IR'] : 0;
+        $DataFileName = isset($_POST['DataFileName']) ? $_POST['DataFileName'] : 0;
+        $employeeID = $_COOKIE['BTL_employeeID'];
+        $output = '';
+        $result = 0;
+
+        $sql = "select * from TestDataInput_tbl where TestPTPScheduleID = ".$ptpTestScheduleId." and IsActive = 1 and IsDeleted = 0 ";
+        $execute = odbc_exec($connServer, $sql);
+        $counter = 0;
+        if($execute){
+            $counter = odbc_num_rows($execute);
+            if($counter ==0){
+                $data = array($formCategoryId, $sampleId, $testTableId, 1, $DataFileName, $ptpTestScheduleId);
+                $insertTestData = "insert into TestDataInput_tbl (FormCategoryID, SampleID, TestTableID, CycleNo, DataFileName, TestPTPScheduleID) values(?, ?, ?, ?, ?, ?) ";
+                $stmtprepareTestData = odbc_prepare($connServer, $insertTestData);
+                $testDataExecute = odbc_execute($stmtprepareTestData, $data);
+                $TestInputLastID = 0;
+                if($testDataExecute){
+                    $TestInputLastID = GetLast_Id($connServer);
+                    $data2 = array($TestInputLastID, $EquipmentNo, $BatteryTemp, $OCV, $CCA, $IR);
+                    $insertTestDetails = "insert into HRDTestDetails_tbl (TestDataInputID, EquipmentNo, BatteryTemp, OCV, CCA, IR) values(?, ?, ?, ?, ?, ?) ";
+                    $stmtprepareTestDetail = odbc_prepare($connServer, $insertTestDetails);
+                    $testDetailsExecute = odbc_execute($stmtprepareTestDetail, $data2);
+
+                    if($testDetailsExecute){
+                        $statusId = 13; //--On-going Testing
+                        $dataStatus = array( $TestInputLastID, $employeeID, $statusId, 'On-going Testing');
+                        $insertInTestStatus = "insert into TestDataStatus_tbl (TestDataInputID, EmployeeID, StatusID, Remarks) values(?, ?, ?, ?) ";
+                        $statusStmt = odbc_prepare($connServer, $insertInTestStatus);
+                        $statusExecute = odbc_execute($statusStmt, $dataStatus);
+
+                        if($statusExecute){
+                            $result = 1;
+                        }
+                        
+                    }
+                }
+                
+            }
+            else{
+
+            }
+        }
+
+        $arr = array(
+            'result' => $result
+        );
+        echo json_encode($arr);
+    }
+    else if($_POST['action'] == 'ShowHRDTDischargeProfileModal'){
+        $TestDataInputID = isset($_POST['TestDataInputID']) ? $_POST['TestDataInputID'] : 0;
+        $result = 0;
+        $sql = "select * from TestDataInput_tbl where TestDataInputID = ".$TestDataInputID." and IsActive = 1 and IsDeleted = 0 ";
+        $execute = odbc_exec($connServer, $sql);
+        $count = 0;
+        if($execute){
+            $count = odbc_num_rows($execute);
+            if($count !=0){
+                $result = 1;
+            }
+        }
+        echo json_encode($result);
+    }
+    else if($_POST['action'] == 'ShowHRDTTestResultModal'){
+        $TestDataInputID = isset($_POST['TestDataInputID']) ? $_POST['TestDataInputID'] : 0;
+        $result = 0;
+        $sql = "select * from TestDataInput_tbl where TestDataInputID = ".$TestDataInputID." and IsActive = 1 and IsDeleted = 0 ";
+        $execute = odbc_exec($connServer, $sql);
+        $count = 0;
+        if($execute){
+            $count = odbc_num_rows($execute);
+            if($count !=0){
+                $result = 1;
+            }
+        }
+        echo json_encode($result);
+    }
+    else if($_POST['action'] == 'DischargeProfileData'){
+        $TestDataInputId = isset($_POST['TestDataInputId']) ? $_POST['TestDataInputId'] : 0;
+        $DischargeCurrent = isset($_POST['DischargeCurrent']) ? $_POST['DischargeCurrent'] : 0;
+        $seconds = isset($_POST['seconds']) ? $_POST['seconds'] : 0;
+        $result = 0;
+
+        $data = array($TestDataInputId, $DischargeCurrent,  $seconds);
+        $sql = "insert into HRDTDischargeProfile_tbl (TestDataInputID, DischargeA, ss_value) values(?, ?, ?) ";
+        $stmt = odbc_prepare($connServer, $sql);
+        $execute = odbc_execute($stmt, $data);
+
+        if($execute){
+            $result = 1;
+        }
+
+        echo json_encode($result);
+    }
+    else if($_POST['action'] == 'HRDTDichargeProfileTbl'){
+        $TestDataInputId = isset($_POST['TestDataInputId']) ? $_POST['TestDataInputId'] : 0;
+        $output = '';
+        $query = "select TestDataInputId, DischargeA, ss_value, DateCreated
+        from HRDTDischargeProfile_tbl
+        where TestDataInputID = ".$TestDataInputId." and IsActive = 1 and IsDeleted = 0 ORDER BY DateCreated ASC  ";
+        
+        $result = odbc_exec($connServer, $query);
+
+        $n = 1;
+        while($row = odbc_fetch_array($result)){
+            $TestDataInputID = $row['TestDataInputId'];
+            $DischargeA = $row['DischargeA'];
+            $ComputedTimeInMins = number_format($row['ss_value']);
+
+            $output .= '
+                <tr>
+                    <td>'.$n.'</td>
+                    <td>'.$DischargeA.'</td>
+                    <td>'.$ComputedTimeInMins.' s</td>
+                </tr>
+            ';
+
+            $n++;
+        }
+
+        echo json_encode($output);
+    }
+    else if($_POST['action'] == 'TestResultData'){
+        $TestDataInputId = isset($_POST['TestDataInputId']) ? $_POST['TestDataInputId'] : 0;
+        $Voltage = isset($_POST['Voltage']) ? $_POST['Voltage'] : 0;
+        $Seconds = isset($_POST['Seconds']) ? $_POST['Seconds'] : 0;
+        $result = 0;
+
+        $data = array($TestDataInputId, $Voltage,  $Seconds);
+        $sql = "insert into HRDTTestResult_tbl (TestDataInputID, BattVoltage, ss_value) values(?, ?, ?) ";
+        $stmt = odbc_prepare($connServer, $sql);
+        $execute = odbc_execute($stmt, $data);
+
+        if($execute){
+            $result = 1;
+        }
+
+        echo json_encode($result);
+    }
+    else if($_POST['action'] == 'HRDTTestResultTbl'){
+        $TestDataInputId = isset($_POST['TestDataInputId']) ? $_POST['TestDataInputId'] : 0;
+        $output = '';
+        $query = "select TestDataInputId, BattVoltage, ss_value, DateCreated
+        from HRDTTestResult_tbl
+        where TestDataInputID = ".$TestDataInputId." and IsActive = 1 and IsDeleted = 0 ORDER BY DateCreated ASC  ";
+        
+        $result = odbc_exec($connServer, $query);
+        while($row = odbc_fetch_array($result)){
+            $TestDataInputID = $row['TestDataInputId'];
+            $BattVoltage = $row['BattVoltage'];
+            $ComputedTimeInMins = number_format($row['ss_value']);
+
+            $output .= '
+                <tr>
+                    <td>'.$ComputedTimeInMins.' s</td>
+                    <td>'.$BattVoltage.'</td>
+                </tr>
+            ';
+        }
+
+        echo json_encode($output);
     }
     //-------------HRDT Test Form End-------------
 }

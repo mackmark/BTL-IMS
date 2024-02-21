@@ -711,7 +711,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <label for="test1Remarks" class="text-primary">Quantity </label>
+                                                    <label for="test2Remarks" class="text-primary">Quantity </label>
                                                 </div>
                                                 <div class="col-md-7 form-group">
                                                     <input type="number" id="test2Qty" class="form-control" name="test2Qty"

@@ -392,8 +392,13 @@ $('#proceedTest').on('click', function(e){
     } else {
         selectedSg = $('#Sg').val();
         if (selectedSg  == null || selectedSg  == '') {
-        isValid = false;
-        $('#Sgerror').text('Please input "0" zero if not applicable.');
+            isValid = false;
+            $('#Sgerror').text('Please input "0" zero if not applicable.');
+        }
+
+        if(selectedSg < 1.10 || selectedSg > 1.32){
+            isValid = false;
+            $('#Sgerror').text('SG value must from 1.10 to 1.32');
         }
     }
     
@@ -932,34 +937,39 @@ $('#submitMTest').on('click', function(){
     CheckedData.append("remarks", remarks);
     $('.form-check-input:checked').each(function(){
         var row = $(this).closest('tr');
-        var rowIndex = row.index() + 1;
-        var rowDataStd;
-        var rowDataQty;
+        if (row.length === 0) {
+            // console.log("Error: Row is undefined or not found.");
+            return; // Exit the loop for this iteration
+        }
+        else{
+            var rowIndex = row.index() + 1;
+            var rowDataStd;
+            var rowDataQty;
 
-        row.find('.form-select').each(function() {
-            var data = $(this).val();
-            rowDataStd = data;
-        });
-
-        // row.find('.qytfield').each(function() {
-        //     var data = $(this).val();
-        //     rowDataQty = data;
-        // });
-        row.find('.qytfield').each(function() {
-            var data = $(this).val();
-            // Check if the value is null or zero
-            if (data === null || data === 0 || data.trim() === "") {
-                // Handle the case where the value is null or zero
-                console.log('Null or zero value in QTY[] at row ' + rowIndex);
-                qtyHolder.push(data);
-            }
-
-            rowDataQty = data;
-        });
-
-        CheckedData.append("rowIndex[]", rowIndex);
-        CheckedData.append("STD[]", rowDataStd);
-        CheckedData.append("QTY[]", rowDataQty);
+            row.find('.form-select').each(function() {
+                var data = $(this).val();
+                rowDataStd = data;
+            });
+    
+            row.find('.qytfield').each(function() {
+                var data = $(this).val();
+                // Check if the value is null or zero
+                if (data === null || data === 0 || data.trim() === "") {
+                    // Handle the case where the value is null or zero
+                    console.log('Null or zero value in QTY[] at row ' + rowIndex);
+                    qtyHolder.push(data);
+                    IsNoZeroQty = false;
+                }
+                rowDataQty = data;
+            });
+    
+            console.log(rowIndex, rowDataStd, rowDataQty)
+    
+            CheckedData.append("rowIndex[]", rowIndex);
+            CheckedData.append("STD[]", rowDataStd);
+            CheckedData.append("QTY[]", rowDataQty);
+        }
+    
     })
     
     for(var i=0; i < qtyHolder.length; i++){
@@ -1038,7 +1048,7 @@ $('#submitMTest2').on('click', function(){
             }
             rowDataQty = data;
         });
-
+        console.log(rowIndex, rowDataStd, rowDataQty)
         CheckedData.append("rowIndex[]", rowIndex);
         CheckedData.append("STD[]", rowDataStd);
         CheckedData.append("QTY[]", rowDataQty);
