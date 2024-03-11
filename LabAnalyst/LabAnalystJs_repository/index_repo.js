@@ -1014,19 +1014,20 @@ function SubmitCapacity(){
                             else{
                                 Swal.fire('error', 'something went wrong.', 'error');
                             }
+                            process_tbl(4)
                         }
                     });
 
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
 
                 }
-         });
-        
+         });   
     }
 }
 
-function ReviewCapacityBtn(testDataInputID){
+function ReviewCapacityBtn(testDataInputID, ptpScheduleID){
     var testDataInputId = testDataInputID
+    var ptpTestScheduleID = ptpScheduleID
     var CapacityRemarks = $('#CapacityFormRemarks').val()
     
     $.ajax({
@@ -1036,23 +1037,35 @@ function ReviewCapacityBtn(testDataInputID){
         data: {
             action:'submitReviewedCapacityform',
             testDataInputId:testDataInputId,
-            CapacityRemarks:CapacityRemarks
+            CapacityRemarks:CapacityRemarks,
+            ptpTestScheduleID:ptpTestScheduleID
         },
         success: function (data) {
             var result = JSON.parse(data)
             if(result==1){
-                alert('success')
+                Swal.fire('info', 'Test Sample Reviewed.', 'info');
             }
             else{
                 alert('something went wrong')
             }
+            process_tbl(4)
+            $('#TestDataInputFormCapacity').modal('hide')
         }
     });
 }
 
-function RetestCapacityStatBtn(testDataInputID){
+function RejectCapacityStatBtn(testDataInputID){
     var testDataInputId = testDataInputID
     var CapacityRemarks = $('#CapacityFormRemarks').val()
+    
+    $('#RejectTestDataInputID').val(testDataInputId)
+    $('#RejectRemarks').val()
+    $('#RejectModal').modal('show')
+}
+
+$('#Select_Reject_Retest').on('click', function(){
+    var TestDataInputID =  $('#RejectTestDataInputID').val()
+    var RetestRemarks = $('#RejectRemarks').val()
     
     $.ajax({
         type: "POST",
@@ -1060,8 +1073,8 @@ function RetestCapacityStatBtn(testDataInputID){
         url: "LabAnalystPhp_repository/index_repo.php",
         data: {
             action:'submitRetestStatCapacityform',
-            testDataInputId:testDataInputId,
-            CapacityRemarks:CapacityRemarks
+            testDataInputId:TestDataInputID,
+            CapacityRemarks:RetestRemarks
         },
         success: function (data) {
             var result = JSON.parse(data)
@@ -1072,10 +1085,14 @@ function RetestCapacityStatBtn(testDataInputID){
                 Swal.fire('error', 'something went wrong.', 'error');
             }
             process_tbl(4)
+            $('#RejectModal').modal('hide')
             $('#TestDataInputFormCapacity').modal('hide')
         }
     });
-}
+
+    
+})
+
 
 function RetestCapacityBtn(testDataInputID){
     var testDataInputId = testDataInputID
@@ -1309,7 +1326,7 @@ function HRDTSaveDetailBtn(formCatID, sampleID, testTableID, ptpTestScheduleID){
                                 Swal.fire('success', 'Data has been saved.', 'success');
                                 $('#HRDTSaveDetailsBtn').addClass('d-none')
                                 $('#HRDTEditDetailsBtn').removeClass('d-none')
-                                alert(result)
+                                // alert(result)
                             }
                             else{
                                 Swal.fire('error', 'something went wrong.', 'error');
@@ -1496,6 +1513,136 @@ function HRDTTestResult_tbl(){
     });
 }
 
+function SubmitHRDT(){
+    var TestDataInputId = $('#TestDataInputiID').val()
+    var HRDTRemarks = $('#HRDTFormRemarks').val()
+
+    Swal.fire({
+        title: 'Confirmation',
+        text: 'Do you want to submit this Test Data?',
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Proceed',
+      }).then(result => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "LabAnalystPhp_repository/index_repo.php",
+                    data: {
+                        action:'SubmitHRDTData',
+                        TestDataInputId:TestDataInputId,
+                        HRDTRemarks:HRDTRemarks
+                    },
+                    success: function (data) {
+                        var result = JSON.parse(data)
+                        if(result==1){
+                            Swal.fire('success', 'Data has been saved.', 'success');
+                            $('#TestDataInputFormHRDT').modal('hide')
+                        }
+                        else{
+                            Swal.fire('error', 'something went wrong.', 'error');
+                        }
+                        process_tbl(4)
+                    }
+                });
+
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+            }
+     });  
+}
+
+function ReviewHRDTBtn(testDataInputID){
+    var testDataInputId = testDataInputID
+    var HRDTRemarks = $('#HRDTFormRemarks').val()
+    
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'submitReviewedHRDTform',
+            testDataInputId:testDataInputId,
+            HRDTRemarks:HRDTRemarks
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                Swal.fire('success', 'Test form has been reviewed.', 'success');
+                $('#TestDataInputFormHRDT').modal('hide')
+            }
+            else{
+                Swal.fire('error', 'something went wrong.', 'error');
+            }
+            process_tbl(4)
+            $('#TestDataInputFormHRDT').modal('hide')
+        }
+    });
+}
+
+function RetestHRDTStatBtn(testDataInputID, HRDTestDetailID, ptpTestScheduleId){
+    var ptpTestScheduleID = ptpTestScheduleId
+    var testDataInputId = testDataInputID
+    var HRDTestDetailId = HRDTestDetailID
+    var HRDTRemarks = $('#HRDTFormRemarks').val()
+    
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'submitRetestStatHRDTform',
+            testDataInputId:testDataInputId,
+            HRDTestDetailId:HRDTestDetailId,
+            ptpTestScheduleID:ptpTestScheduleID,
+            HRDTRemarks:HRDTRemarks
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                Swal.fire('info', 'Sample Retest.', 'info');
+            }
+            else{
+                Swal.fire('error', 'something went wrong.', 'error');
+            }
+            process_tbl(4)
+            $('#TestDataInputFormHRDT').modal('hide')
+        }
+    });
+}
+
+function ApprovalHRDTBtn(testDataInputID, ptpScheduleID){
+    var testDataInputId = testDataInputID
+    var ptpScheduleid = ptpScheduleID
+    var HRDTRemarks = $('#HRDTFormRemarks').val()
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'submitApprovedHRDTform',
+            testDataInputId:testDataInputId,
+            HRDTRemarks:HRDTRemarks,
+            ptpScheduleid:ptpScheduleid
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                Swal.fire('success', 'Test has been approved.', 'success');
+            }
+            else{
+                Swal.fire('error', 'something went wrong.', 'error');
+            }
+            process_tbl(4)
+            $('#TestDataInputFormHRDT').modal('hide')
+        }
+    });
+}
+
+
 //HRDT Forms Modal Discharge Profile and TestResult End
 
 function VTTestForm(sampleID, currentTest, testTableID, formCatID, formTitleText, testSampleTxt, formTestDate){
@@ -1519,6 +1666,30 @@ $('#ShowAddTestObservationBtn').on('click', function(){
     $('#VTAddObservationTestForm').modal('show')
 })
 //VT forms modal add test observation end
+
+//HLET Modal Forms
+$('#ShowAddHLETBtn').on('click', function(){
+    $('#HLETTestForm').modal('show')
+})
+//HLET Modal Forms end
+
+//LLET Modal Forms
+$('#ShowAddLLETBtn').on('click', function(){
+    $('#LLETTestForm').modal('show')
+})
+//LLET Modal Forms end
+
+//DOD17p5 Modal Forms
+$('#ShowAddDOD17p5Btn').on('click', function(){
+    $('#DOD17p5TestForm').modal('show')
+})
+//DOD17p5 Modal Forms end
+
+//DOD50 Modal Forms
+$('#ShowAddDOD50Btn').on('click', function(){
+    $('#DOD50TestForm').modal('show')
+})
+//DOD50 Modal Forms end
 
 function TestForms(sampleID, batteryTypeID){
     var testSampleID = sampleID

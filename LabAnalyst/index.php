@@ -1830,7 +1830,9 @@
                             </div>
                         </div>
 
-                        <div class="modal fade text-left" id="TestDataInputFormVT" tabindex="-1" role="dialog"
+                        <!--VT, WCT, HLET, LLET, DOD 17.5% and DOD 50% -->
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT_Original" tabindex="-1" role="dialog"
                             aria-labelledby="myModallabelReview" aria-hidden="true">
                             <div class="modal-dialog modal-lg"
                                 role="document">
@@ -1907,7 +1909,7 @@
                                                                     <label>Acceleration, g</label>
                                                                 </div>
                                                                 <div class="col-md-5 form-group">
-                                                                    <input type="text" id="TestDataCycleNo" class="form-control" name="TestDataCycleNo"
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
                                                                         >
                                                                 </div>
                                                                 <div class="col-md-1">
@@ -1920,7 +1922,7 @@
                                                                     <label>Duration, hrs</label>
                                                                 </div>
                                                                 <div class="col-md-6 form-group">
-                                                                    <input type="text" id="TestDataEqipment" class="form-control" name="TestDataEqipment"
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
                                                                     >
                                                                 </div>
                                                                 <div class="col-md-1">
@@ -1933,7 +1935,7 @@
                                                                     <label>Discharge current, A</label>
                                                                 </div>
                                                                 <div class="col-md-5 form-group">
-                                                                    <input type="number" id="TestDataDischargeA" class="form-control" name="TestDataDischargeA"
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
                                                                         placeholder="">
                                                                 </div>
                                                             </div>
@@ -1942,7 +1944,7 @@
                                                                     <label>Post-vibration test</label>
                                                                 </div>
                                                                 <div class="col-md-5 form-group">
-                                                                    <input type="number" id="TestDataCutOffV" class="form-control" name="TestDataCutOffV"
+                                                                    <input type="number" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
                                                                         placeholder="">
                                                                 </div>
                                                             </div>
@@ -1971,7 +1973,7 @@
                                                                     <th style='white-space:nowrap;'>DCH Current</th>
                                                                     <th style='white-space:nowrap;'>Hertz</th>
                                                                     <th style='white-space:nowrap;'>VT Meter</th>
-                                                                    <th style='white-space:nowrap;'>Voltage 10 mins</th>
+                                                                    <th style='white-space:nowrap;'>Voltage</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -2119,6 +2121,1399 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT_WCT" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="textTestTitleWCT">Testing Form: WATER CONSUMPTION / ELECTROLYTE REDUCTION
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container testFormDivVT">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Battery No.</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataBatNoVT" class="form-control font-bold" name="TestDataBatNo"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Testing Date</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataTestDateVT" class="form-control font-bold" name="TestDataTestDate"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Parameters and Equipment</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Test Standard</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Charging Voltage, V</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
+                                                                        >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Water Bath Temp, ºC</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Duration, days</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Circuit No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Water Bath No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Test Program</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Results</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <label class="superscript">Battery weight before test, kg<span>1</span></label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <label class="superscript">Battery weight intermediate, kg<span>1,2</span></label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <label class="superscript">Battery weight after test, kg<span>1</span></label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <label>Data file name/s</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="mt-4">
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Before weighing the battery, make sure that all its surfaces are totally clean and dry. The weighing scale to be used should have an accuracy of at least ±0.001 kg if the battery weight is < 30 kg and at least ±0.005 kg if the battery weight is ≥ 30 kg.</p>
+
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For EN standard requirement level 4 (14.40 V, 60ºC, 42 days), disconnect, clean, and weigh the battery halfway through the test (after 21 days).</p>
+                                                    </div>
+                                                    
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-12">
+                                                            <label>Prepared by: </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
+                                                            <label >Leomar Unica  </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="container text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Submit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT_HLET" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="textTestTitleHLET">Testing Form: JIS HEAVY LOAD ENDURANCE TEST
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container testFormDivVT">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Battery No.</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataBatNoVT" class="form-control font-bold" name="TestDataBatNo"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Testing Date</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataTestDateVT" class="form-control font-bold" name="TestDataTestDate"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Parameters and Equipment</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Circuit No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Water Bath No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
+                                                                        >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Water Bath Temp, ºC</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>HRD current, A</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Data File Name</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>State of Health Check (10.2V Test)</h6></div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-end">
+                                                        <div class="p-2">
+                                                            <h6 class="text-center float-start">Add</h6>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowAddHLETBtn"><i class="fa fa-plus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="table-responsive mt-4">
+                                                        <table class="table table-bordered mb-0" id="HLET_Tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style='white-space:nowrap;'>Week No.</th>
+                                                                    <th style='white-space:nowrap;'>Checking Date</th>
+                                                                    <th style='white-space:nowrap;'>DCH Time</th>
+                                                                    <th style='white-space:nowrap;'>Computed AH</th>
+                                                                    <th style='white-space:nowrap;'>Top-up Demi (ml)</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Testing should be stopped when the 10.2 voltage during state-of-health checks falls below 40% of Ah.</p>
+
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For low-maintenance / conventional batteries, the electrolyte level of each cell should be checked after the high rate discharge test and the cells that have low electrolyte level should be topped up with purified water. The amount of water used for top-up should be recorded. <u>For maintenance-free batteries, the electrolyte should NOT be topped up.</u></p>
+                                                    </div>
+                                                    
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-12">
+                                                            <label>Prepared by: </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
+                                                            <label >Leomar Unica  </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="container text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Submit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT_LLET" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="textTestTitleHLET">Testing Form: JIS LIGHT LOAD ENDURANCE TEST
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container testFormDivVT">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Battery No.</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataBatNoVT" class="form-control font-bold" name="TestDataBatNo"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Testing Date</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataTestDateVT" class="form-control font-bold" name="TestDataTestDate"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Parameters and Equipment</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Circuit No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Water Bath No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
+                                                                        >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Water Bath Temp, ºC</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>HRD current, A</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Data File Name</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>State of Health Check (10.2V Test)</h6></div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-end">
+                                                        <div class="p-2">
+                                                            <h6 class="text-center float-start">Add</h6>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowAddLLETBtn"><i class="fa fa-plus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="table-responsive mt-4">
+                                                        <table class="table table-bordered mb-0" id="HLET_Tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style='white-space:nowrap;'>Week No.</th>
+                                                                    <th style='white-space:nowrap;'>Checking Date</th>
+                                                                    <th style='white-space:nowrap;'>V, 30s</th>
+                                                                    <th style='white-space:nowrap;'>Top-up Water, mL</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Testing should be stopped when the 30-s voltage during state-of-health checks falls below 7.2 V.</p>
+
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For low-maintenance / conventional batteries, the electrolyte level of each cell should be checked after the high rate discharge test and the cells that have low electrolyte level should be topped up with purified water. The amount of water used for top-up should be recorded. <u>For maintenance-free batteries, the electrolyte should NOT be topped up.</u></p>
+                                                    </div>
+                                                    
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-12">
+                                                            <label>Prepared by: </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
+                                                            <label >Leomar Unica  </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="container text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Submit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="textTestTitleHLET">Testing Form: EN DEPTH OF DISCHARGE 17.5% TEST
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container testFormDivVT">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Battery No.</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataBatNoVT" class="form-control font-bold" name="TestDataBatNo"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Testing Date</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataTestDateVT" class="form-control font-bold" name="TestDataTestDate"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Parameters and Equipment</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Circuit No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Water Bath No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
+                                                                        >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Water Bath Temp, ºC</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>HRD current, A</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Data File Name</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>State of Health Check (HRD Test)</h6></div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-end">
+                                                        <div class="p-2">
+                                                            <h6 class="text-center float-start">Add</h6>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowAddDOD17p5Btn"><i class="fa fa-plus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="table-responsive mt-4">
+                                                        <table class="table table-bordered mb-0" id="HLET_Tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style='white-space:nowrap;'>Week No.</th>
+                                                                    <th style='white-space:nowrap;'>Checking Date</th>
+                                                                    <th style='white-space:nowrap;'>V, 30s</th>
+                                                                    <th style='white-space:nowrap;'>Top-up Water, mL</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Testing should be stopped when the voltage during state-of-health checks falls below 10 V.</p>
+
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For low-maintenance / conventional batteries, the electrolyte level of each cell should be checked after the high rate discharge test and the cells that have low electrolyte level should be topped up with purified water. The amount of water used for top-up should be recorded. <u>For maintenance-free batteries, the electrolyte should NOT be topped up.</u></p>
+                                                    </div>
+                                                    
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-12">
+                                                            <label>Prepared by: </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
+                                                            <label >Leomar Unica  </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="container text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Submit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade text-left" id="TestDataInputFormVT_DOD50" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="textTestTitleHLET">Testing Form: EN DEPTH OF DISCHARGE 50 % TEST
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container testFormDivVT">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Battery No.</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataBatNoVT" class="form-control font-bold" name="TestDataBatNo"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Testing Date</label>
+                                                                </div>
+                                                                <div class="col-md-6 form-group">
+                                                                    <input type="text" id="TestDataTestDateVT" class="form-control font-bold" name="TestDataTestDate"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>Test Parameters and Equipment</h6></div>
+                                                    </div>
+
+                                                    <div class="row mt-4">
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Circuit No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataTestTypeVT" class="form-control" name="TestDataTestType"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label>Water Bath No.</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTAcceleration" class="form-control" name="TestDataVTAcceleration"
+                                                                        >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Water Bath Temp, ºC</label>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <input type="text" id="DurationHrs" class="form-control" name="DurationHrs"
+                                                                    >
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>HRD current, A</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="number" id="TestDataVTDischargeA" class="form-control" name="TestDataVTDischargeA"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-7">
+                                                                    <label>Data File Name</label>
+                                                                </div>
+                                                                <div class="col-md-5 form-group">
+                                                                    <input type="text" id="TestDataPostVT" class="form-control" name="TestDataPostVT"
+                                                                        placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="divider divider-center">
+                                                        <div class="divider-text text-primary"><h6>State of Health Check (HRD Test)</h6></div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-end">
+                                                        <div class="p-2">
+                                                            <h6 class="text-center float-start">Add</h6>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm float-end" id="ShowAddDOD50Btn"><i class="fa fa-plus-circle"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="table-responsive mt-4">
+                                                        <table class="table table-bordered mb-0" id="HLET_Tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style='white-space:nowrap;'>Cycle No. (120D)</th>
+                                                                    <th style='white-space:nowrap;'>Checking Date</th>
+                                                                    <th style='white-space:nowrap;'>V, 30s</th>
+                                                                    <th style='white-space:nowrap;'>Computed Ah</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                    <td class="text-bold-500" style='white-space:nowrap;'>
+                                                                        <input type="text" id="TestDataPreCapacityOCV" class="form-control" name="TestDataPreCapacityOCV"
+                                                                        placeholder="">
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">1</span> Testing should be stopped when the 30-s voltage during state-of-health checks falls below 7.2 V.</p>
+
+                                                        <p style=" font-size: 0.9em;font-style: italic;"><span style=" font-size: 0.6em;top:-4px;position:relative;">2</span> For low-maintenance / conventional batteries, the electrolyte level of each cell should be checked after the high rate discharge test and the cells that have low electrolyte level should be topped up with purified water. The amount of water used for top-up should be recorded. <u>For maintenance-free batteries, the electrolyte should NOT be topped up.</u></p>
+                                                    </div>
+                                                    
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-12">
+                                                            <label>Prepared by: </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row text-center" style="position:relative; margin-left:0.5px;">
+                                                        <div class="col-md-4" style="border-bottom: solid 1px black">
+                                                            <label >Leomar Unica  </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="container text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary ml-1" id="SubmitTestForm">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Submit</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--VT, WCT, HLET, LLET, DOD 17.5% and DOD 50% End-->
 
                         <div class="modal fade text-left" id="TestForms" tabindex="-1" role="dialog"
                             aria-labelledby="myModallabelReview" aria-hidden="true">
@@ -2403,7 +3798,7 @@
                                                                 <div class="form-group has-icon-left">
                                                                     <label for="hoursMin-icon">Hours/Mins</label>
                                                                     <div class="position-relative">
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="time" class="form-control"
                                                                             placeholder="Hours/Mins" id="hoursMin-icon">
                                                                         <div class="form-control-icon">
                                                                             <i class="bi bi-alarm"></i>
@@ -2453,10 +3848,10 @@
 
                                                             <div class="col-12">
                                                                 <div class="form-group has-icon-left">
-                                                                    <label for="voltage10-icon">Voltage 10 mins</label>
+                                                                    <label for="voltage10-icon">Voltage</label>
                                                                     <div class="position-relative">
                                                                         <input type="text" class="form-control"
-                                                                            placeholder="Voltage 10 mins" id="voltage10-icon">
+                                                                            placeholder="Voltage" id="voltage10-icon">
                                                                         <div class="form-control-icon">
                                                                             <i class="bi bi-battery-charging"></i>
                                                                         </div>
@@ -2486,6 +3881,415 @@
                             </div>
                         </div>
                         <!--VT Modal Forms end-->
+
+                        <!--HLET Modal Forms -->
+                        <div class="modal fade text-left" id="HLETTestForm" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add Test State of Health Check
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="acceleration-icon">Week No.</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control" placeholder="Week No."
+                                                                            id="acceleration-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar2-week"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="hoursMin-icon">Checking Date</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="date" class="form-control"
+                                                                            placeholder="Hours/Mins" id="hoursMin-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar-check"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="dch-icon">DCH Time</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="time" class="form-control"
+                                                                            placeholder="DCH Current" id="dch-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-alarm"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="hertz-icon">Computed AH</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="AH" id="hertz-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="VTMeter-icon">Top-Up Demi (ml)</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Top-up Demi (ml)" id="VTMeter-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-droplet-half"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--HLET Modal Forms end-->
+
+                        <!--LLET Modal Forms -->
+                        <div class="modal fade text-left" id="LLETTestForm" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add Test State of Health Check (HRD Test)
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="acceleration-icon">Week No.</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control" placeholder="Week No."
+                                                                            id="acceleration-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar2-week"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="hoursMin-icon">Checking Date</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="date" class="form-control"
+                                                                            placeholder="Hours/Mins" id="hoursMin-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar-check"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="dch-icon">V 30s</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="V 30s" id="dch-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="VTMeter-icon">Top-Up Water, mL</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Top-Up Water, mL" id="VTMeter-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-droplet-half"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--LLET Modal Forms end-->
+
+                        <!--DOD17p5 Modal Forms -->
+                        <div class="modal fade text-left" id="DOD17p5TestForm" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add Test State of Health Check (HRD Test)
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="acceleration-icon">Week No.</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control" placeholder="Week No."
+                                                                            id="acceleration-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar2-week"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="hoursMin-icon">Checking Date</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="date" class="form-control"
+                                                                            placeholder="Hours/Mins" id="hoursMin-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar-check"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="dch-icon">V 30s</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="V 30s" id="dch-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="VTMeter-icon">Top-Up Water, mL</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Top-Up Water, mL" id="VTMeter-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-droplet-half"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--DOD17p5 Modal Forms end-->
+
+                        <!--DOD50 Modal Forms -->
+                        <div class="modal fade text-left" id="DOD50TestForm" tabindex="-1" role="dialog"
+                            aria-labelledby="myModallabelReview" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add Test State of Health Check (HRD Test)
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="acceleration-icon">Cycle No.</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control" placeholder="Cycle No."
+                                                                            id="acceleration-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-arrow-repeat"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="hoursMin-icon">Checking Date</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="date" class="form-control"
+                                                                            placeholder="Hours/Mins" id="hoursMin-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-calendar-check"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="dch-icon">V 30s</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="V 30s" id="dch-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="VTMeter-icon">Computed Ah</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="Computed Ah" id="VTMeter-icon">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="DischargeProfileSave">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--DOD50 Modal Forms end-->
 
                         <!--HRDT Modal forms -->
                         <div class="modal fade text-left" id="HRDTDischargeProfile" tabindex="-1" role="dialog"
@@ -2676,6 +4480,61 @@
                             </div>
                         </div>
                         <!--HRDT Modal forms end-->
+
+                        <div class="modal fade text-left" id="RejectModal" tabindex="-1" role="dialog"
+                            aria-labelledby="HRDTTestResultForm" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Reject
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <input type="hidden" id="RejectTestDataInputID">
+                                                <div class="form-group mb-3 ">
+                                                    <label for="RejectRemarks" class="form-label">Remarks</label>
+                                                    <textarea class="form-control" id="RejectRemarks" placeholder="Reject Remarks" rows="2"></textarea>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button class="btn btn-light btn-block btn-md">
+                                                        <i class="bi bi-arrow-left-right"></i> Change Data
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-outline-warning btn-block btn-md" id="Select_Reject_Retest">
+                                                        <i class="bi bi-bootstrap-reboot"></i> Retest
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="TestResultBtnSave">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Proceed</span>
+                                            </button>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
 
                         <footer>
                             <div class="footer clearfix mb-0 text-muted">
