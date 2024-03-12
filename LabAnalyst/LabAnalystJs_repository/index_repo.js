@@ -1054,17 +1054,20 @@ function ReviewCapacityBtn(testDataInputID, ptpScheduleID){
     });
 }
 
-function RejectCapacityStatBtn(testDataInputID){
+function RejectCapacityStatBtn(testDataInputID, ptpScheduleID){
     var testDataInputId = testDataInputID
+    var ptpTestScheduleID = ptpScheduleID
     var CapacityRemarks = $('#CapacityFormRemarks').val()
     
     $('#RejectTestDataInputID').val(testDataInputId)
+    $('#RejectPTPTestDataInputID').val(ptpTestScheduleID)
     $('#RejectRemarks').val()
     $('#RejectModal').modal('show')
 }
 
 $('#Select_Reject_Retest').on('click', function(){
     var TestDataInputID =  $('#RejectTestDataInputID').val()
+    var PtpTestScheduleID = $('#RejectPTPTestDataInputID').val()
     var RetestRemarks = $('#RejectRemarks').val()
     
     $.ajax({
@@ -1074,6 +1077,7 @@ $('#Select_Reject_Retest').on('click', function(){
         data: {
             action:'submitRetestStatCapacityform',
             testDataInputId:TestDataInputID,
+            PtpTestScheduleID:PtpTestScheduleID,
             CapacityRemarks:RetestRemarks
         },
         success: function (data) {
@@ -1089,14 +1093,10 @@ $('#Select_Reject_Retest').on('click', function(){
             $('#TestDataInputFormCapacity').modal('hide')
         }
     });
-
-    
 })
-
 
 function RetestCapacityBtn(testDataInputID){
     var testDataInputId = testDataInputID
-    var CapacityRemarks = $('#CapacityFormRemarks').val()
 
     var formCatId = $('#formCategoryId').val()
     var ptpScheduleID = $('#ptpTestScheduleID').val()
@@ -1191,6 +1191,156 @@ function RetestCapacityBtn(testDataInputID){
     }
 }
 
+$('#Select_Reject_ChangeData').on('click', function(){
+    var TestDataInputID =  $('#RejectTestDataInputID').val()
+    var PtpTestScheduleID = $('#RejectPTPTestDataInputID').val()
+    var ChangeDataRemarks = $('#RejectRemarks').val()
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'submitChangeDataStatCapacityform',
+            TestDataInputID:TestDataInputID,
+            PtpTestScheduleID:PtpTestScheduleID,
+            ChangeDataRemarks:ChangeDataRemarks
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                Swal.fire('info', 'Sample Test Data Changed.', 'info');
+            }
+            else{
+                Swal.fire('error', 'something went wrong.', 'error');
+            }
+            process_tbl(4)
+            $('#RejectModal').modal('hide')
+            $('#TestDataInputFormCapacity').modal('hide')
+        }
+    });
+})
+
+function SubmitChangesCapacityBtn(testDataInputID, ptpScheduleID){
+    var testDataInputId = testDataInputID
+    var ptpScheduleid = ptpScheduleID
+
+    var formCatId = $('#formCategoryId').val()
+    var sampleID = $('#sampleId').val()
+    var testTableID = $('#testTableId').val()
+    var cycleNo = $('#TestDataCycleNoData').val()
+    var dataFileName = $('#CapacityDataFileName').val()
+
+    var waterBathCellNoID = $('#TestDataEquipmentCapacityID').val()
+    var dischargeCurrent = $('#TestDataDischargeA').val()
+    var cuttOffVoltage = $('#TestDataCutOffV').val()
+
+    var ocv = $('#PreCapacityOCV').val()
+    var dischargeTimeMins = $('#PostCapacityDischargeTime').val()
+    var cca = $('#CapacityCCA').val()
+    var PostCapacity1SG1 = $('#Capacity1SG1').val()
+    var PostCapacity2SG2 = $('#Capacity1SG2').val()
+    var PreCapacity1SG1 = $('#Capacity2SG1').val()
+    var PreCapacity2SG2 = $('#Capacity2SG2').val()
+    var CapacityRemarks = $('#CapacityFormRemarks').val()
+    // console.log(formCatId, sampleID, testTableID, cycleNo, dataFileName, waterBathCellNoID, dischargeCurrent, cuttOffVoltage, ocv, dischargeTimeMins, cca, PostCapacity1SG1, PostCapacity2SG2, PreCapacity1SG1, PreCapacity2SG2, CapacityRemarks)
+    var dataForm = new FormData();
+    dataForm.append('action', 'submitChangeDataCapacityForm')
+    dataForm.append('formaCatID', formCatId)
+    dataForm.append('testDataInputId', testDataInputId)
+    dataForm.append('ptpTestScheduleID', ptpScheduleid)
+    dataForm.append('sampleID', sampleID)
+    dataForm.append('testTableID', testTableID)
+    dataForm.append('cycleNo', cycleNo)
+    dataForm.append('dataFileName', dataFileName)
+    dataForm.append('waterBathCellNoID', waterBathCellNoID)
+    dataForm.append('dischargeCurrent', dischargeCurrent)
+    dataForm.append('cuttOffVoltage', cuttOffVoltage)
+    dataForm.append('ocv', ocv)
+    dataForm.append('dischargeTimeMins', dischargeTimeMins)
+    dataForm.append('cca', cca)
+    dataForm.append('PostCapacity1SG1', PostCapacity1SG1)
+    dataForm.append('PostCapacity2SG2', PostCapacity2SG2)
+    dataForm.append('PreCapacity1SG1', PreCapacity1SG1)
+    dataForm.append('PreCapacity2SG2', PreCapacity2SG2)
+    dataForm.append('CapacityRemarks', CapacityRemarks)
+
+    var IsProceed = true;
+    for (let entry of dataForm.entries()) {
+        console.log(entry[0] + ':', entry[1]);
+        if(entry[1] === null || entry[1] === 0 || entry[1].trim() === ""){
+            Swal.fire('Data Validation', 'Field cannot be empty, please put n/a if not applicable.', 'warning');
+            IsProceed = false;
+            break;
+        }
+    }
+
+    if(IsProceed){
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Do you want to submit the changed data?',
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Proceed',
+          }).then(result => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        contentType: false,
+                        processData: false,
+                        url: "LabAnalystPhp_repository/index_repo.php",
+                        data: dataForm,
+                        success: function (data) {
+                            var result = JSON.parse(data)
+                            if(result==1){
+                                Swal.fire('success', 'Data has been saved.', 'success');
+                            }
+                            else{
+                                Swal.fire('error', 'something went wrong.', 'error');
+                            }
+                            process_tbl(4)
+                            $('#TestDataInputFormCapacity').modal('hide')
+                        }
+                    });
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+                }
+         });
+    }
+}
+
+function CapacityChangeDataApproval(testDataInputID, ptpScheduleID){
+    var testDataInputId = testDataInputID
+    var ptpScheduleid = ptpScheduleID
+    var CapacityRemarks = $('#CapacityFormRemarks').val()
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data: {
+            action:'submitChangeDataStatCapacityform',
+            TestDataInputID:testDataInputId,
+            PtpTestScheduleID:ptpScheduleid,
+            ChangeDataRemarks:CapacityRemarks
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+            if(result==1){
+                Swal.fire('info', 'Sample Test Data Changed.', 'info');
+            }
+            else{
+                Swal.fire('error', 'something went wrong.', 'error');
+            }
+            process_tbl(4)
+            $('#TestDataInputFormCapacity').modal('hide')
+        }
+    });
+}
+
 function ApprovalCapacityBtn(testDataInputID, ptpScheduleID){
     var testDataInputId = testDataInputID
     var ptpScheduleid = ptpScheduleID
@@ -1219,6 +1369,9 @@ function ApprovalCapacityBtn(testDataInputID, ptpScheduleID){
         }
     });
 }
+
+
+//HRDT Forms Modal,  Discharge Profile,  and TestResult
 
 function HRDTTestForm(ptpScheduleID, sampleID, currentTest, testTableID, formCatID, formTitleText, testSampleTxt, formTestDate, waterBathCellNoID, statusID, IsHaveRow){
     var ptpTestScheduleID = ptpScheduleID
@@ -1340,8 +1493,6 @@ function HRDTSaveDetailBtn(formCatID, sampleID, testTableID, ptpTestScheduleID){
          });
     }
 }
-
-//HRDT Forms Modal Discharge Profile and TestResult
 
 function ShowProfileModalBtn(TestDataInputId){
     var TestDataInputID = TestDataInputId
@@ -1642,8 +1793,8 @@ function ApprovalHRDTBtn(testDataInputID, ptpScheduleID){
     });
 }
 
-
 //HRDT Forms Modal Discharge Profile and TestResult End
+
 
 function VTTestForm(sampleID, currentTest, testTableID, formCatID, formTitleText, testSampleTxt, formTestDate){
     var sampleId = sampleID

@@ -4501,13 +4501,14 @@
                                             </div>
                                             <div class="card-body">
                                                 <input type="hidden" id="RejectTestDataInputID">
+                                                <input type="hidden" id="RejectPTPTestDataInputID">
                                                 <div class="form-group mb-3 ">
                                                     <label for="RejectRemarks" class="form-label">Remarks</label>
                                                     <textarea class="form-control" id="RejectRemarks" placeholder="Reject Remarks" rows="2"></textarea>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <button class="btn btn-light btn-block btn-md">
+                                                        <button class="btn btn-light btn-block btn-md" id="Select_Reject_ChangeData">
                                                         <i class="bi bi-arrow-left-right"></i> Change Data
                                                         </button>
                                                     </div>
