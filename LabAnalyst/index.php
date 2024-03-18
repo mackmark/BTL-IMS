@@ -1832,7 +1832,7 @@
 
                         <!--VT, WCT, HLET, LLET, DOD 17.5% and DOD 50% -->
 
-                        <div class="modal fade text-left" id="TestDataInputFormVT_Original" tabindex="-1" role="dialog"
+                        <div class="modal fade text-left" id="TestDataInputFormVT" tabindex="-1" role="dialog"
                             aria-labelledby="myModallabelReview" aria-hidden="true">
                             <div class="modal-dialog modal-lg"
                                 role="document">
@@ -2122,7 +2122,7 @@
                             </div>
                         </div>
 
-                        <div class="modal fade text-left" id="TestDataInputFormVT_WCT" tabindex="-1" role="dialog"
+                        <div class="modal fade text-left" id="TestDataInputFormWCT" tabindex="-1" role="dialog"
                             aria-labelledby="myModallabelReview" aria-hidden="true">
                             <div class="modal-dialog modal-lg"
                                 role="document">
@@ -2933,7 +2933,7 @@
                             </div>
                         </div>
 
-                        <div class="modal fade text-left" id="TestDataInputFormVT" tabindex="-1" role="dialog"
+                        <div class="modal fade text-left" id="TestDataInputFormVTDOD17p" tabindex="-1" role="dialog"
                             aria-labelledby="myModallabelReview" aria-hidden="true">
                             <div class="modal-dialog modal-lg"
                                 role="document">
@@ -4311,7 +4311,7 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
-                                                <input type="hidden" id="HRDTTestDataInputIDShowProfile">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDShowProfile">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">
@@ -4427,7 +4427,7 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
-                                                <input type="hidden" id="HRDTTestDataInputIDShowProfile">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDTestResult">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">
@@ -4480,6 +4480,148 @@
                             </div>
                         </div>
                         <!--HRDT Modal forms end-->
+                        <!--HRDT Modal Edit forms -->
+                        <div class="modal fade text-left" id="HRDTDischargeProfileEdit" tabindex="-1" role="dialog"
+                            aria-labelledby="HRDTDischargeProfile" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Discharge Profile
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDShowProfile">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="HRDTCurrentShowProfiles">Discharge Current, A</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control"
+                                                                            placeholder="Discharge Current" id="HRDTCurrentShowProfilesEdit">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-lightning-charge-fill"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="seconds-icon">Seconds</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="number" class="form-control" placeholder="ss"
+                                                                                id="seconds-iconEdit">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-clock"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="HRDTDischargeProfileBtnUpdate">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Update</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade text-left" id="HRDTTestResultFormEdit" tabindex="-1" role="dialog"
+                            aria-labelledby="HRDTTestResultForm" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Test Results
+                                        </h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body" style="overflow:hidden;">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            </div>
+                                            <div class="card-body">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDTestResult">
+                                                <form class="form form-vertical">
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="VoltageSeconds-icon">Time, s</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control" placeholder="ss"
+                                                                            id="time-iconEdit">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-clock"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <div class="form-group has-icon-left">
+                                                                    <label for="voltage-icon">Battery Voltage, V</label>
+                                                                    <div class="position-relative">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Battery Voltage" id="voltage-iconEdit">
+                                                                        <div class="form-control-icon">
+                                                                            <i class="bi bi-battery-charging"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"> 
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Close</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" id="TestResultBtnUpdate">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Update</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--HRDT Modal forms end-->
 
                         <div class="modal fade text-left" id="RejectModal" tabindex="-1" role="dialog"
                             aria-labelledby="HRDTTestResultForm" aria-hidden="true">
@@ -4502,6 +4644,7 @@
                                             <div class="card-body">
                                                 <input type="hidden" id="RejectTestDataInputID">
                                                 <input type="hidden" id="RejectPTPTestDataInputID">
+                                                <input type="hidden" id="RejectFormCategoryID">
                                                 <div class="form-group mb-3 ">
                                                     <label for="RejectRemarks" class="form-label">Remarks</label>
                                                     <textarea class="form-control" id="RejectRemarks" placeholder="Reject Remarks" rows="2"></textarea>
