@@ -1597,7 +1597,10 @@ function HRDTDischargeProfileModalBtn(TestPtpScheduleID){
     //This function will check if their is already set testDataInput or not
     //if not it will add the data and prompt a data validation
     var PtpScheduleID = TestPtpScheduleID
+    var StatusID = $('#StatusID').val()
+    // alert(PtpScheduleID)
     $('#HRDTTestPTPScheduleIDShowProfile').val(PtpScheduleID)
+    $('#HRDTStatusIDDischargeProfile').val(StatusID )
 
     var forcatID = $('#formCategoryId').val()
     var sampleId = $('#sampleId').val()
@@ -1670,7 +1673,7 @@ $('#HRDTDischargeProfileBtnSave').on('click', function(e){
     // var minutes = parseInt($('#minutes-icon').val()) || 0
     var seconds = parseInt($('#seconds-icon').val()) || 0
     // var TotalMinutes = hours * 60 + minutes + seconds / 60;
-
+    var status = $('#HRDTStatusIDDischargeProfile').val()
     console.log(TestPtpScheduleId, DischargeCurrent, seconds)
     // alert(TestPtpScheduleId)
 
@@ -1687,7 +1690,7 @@ $('#HRDTDischargeProfileBtnSave').on('click', function(e){
         success: function (data) {
             var result = JSON.parse(data)
             if(result==1){
-                HRDTDischargeProfile_tbl(TestPtpScheduleId, 0)
+                HRDTDischargeProfile_tbl(TestPtpScheduleId, status)
                 $('#HRDTDischargeProfile').modal('hide')
             }
         }
@@ -1722,7 +1725,9 @@ function HRDTTestResultModalBtn(TestPtpScheduleID){
     //This function will check if their is already set testDataInput or not
     //if not it will add the data and prompt a data validation
     var PtpScheduleID = TestPtpScheduleID
+    var StatusID = $('#StatusID').val()
     $('#HRDTTestPTPScheduleIDTestResult').val(PtpScheduleID)
+    $('#HRDTStatusIDTestResult').val(StatusID)
 
     var forcatID = $('#formCategoryId').val()
     var sampleId = $('#sampleId').val()
@@ -1792,6 +1797,8 @@ $('#TestResultBtnSave').on('click', function(e){
     var Voltage = $('#voltage-icon').val()
     var Seconds = $('#time-icon').val()
 
+    var status = $('#HRDTStatusIDTestResult').val()
+
     console.log(TestPTPScheduleId, Voltage, Seconds)
 
     $.ajax({
@@ -1807,7 +1814,7 @@ $('#TestResultBtnSave').on('click', function(e){
         success: function (data) {
             var result = JSON.parse(data)
             if(result==1){
-                HRDTTestResult_tbl(TestPTPScheduleId, 0)
+                HRDTTestResult_tbl(TestPTPScheduleId, status)
                 $('#HRDTTestResultForm').modal('hide')
             }
         }
@@ -1842,7 +1849,7 @@ function SubmitHRDT(){
     var TestDataInputId = $('#TestDataInputiID').val()
     var TestPTPScheduleID = $('#ptpTestScheduleID').val()
     var HRDTRemarks = $('#HRDTFormRemarks').val()
-
+    // alert(TestDataInputId + ' - ' + TestPTPScheduleID + ' - ' + HRDTRemarks)
     Swal.fire({
         title: 'Confirmation',
         text: 'Do you want to submit this Test Data?',
@@ -1910,64 +1917,34 @@ function ReviewHRDTBtn(testDataInputID){
     });
 }
 
-function HRDTRetestSubmit(testDataInputID, ptpTestScheduleId){
-    var ptpTestScheduleID = ptpTestScheduleId
-    var testDataInputId = testDataInputID
-    var HRDTRemarks = $('#HRDTFormRemarks').val()
-    
-    // alert(ptpTestScheduleID + " - " + testDataInputId + " - " + HRDTRemarks)
-
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: "LabAnalystPhp_repository/index_repo.php",
-        data: {
-            action:'submitRetestStatHRDTform',
-            testDataInputId:testDataInputId,
-            ptpTestScheduleID:ptpTestScheduleID,
-            HRDTRemarks:HRDTRemarks
-        },
-        success: function (data) {
-            var result = JSON.parse(data)
-            if(result==1){
-                Swal.fire('info', 'Sample for review', 'info');
-            }
-            else{
-                Swal.fire('error', 'something went wrong.', 'error');
-            }
-            process_tbl(4)
-            $('#TestDataInputFormHRDT').modal('hide')
-        }
-    });
-}
-
 function SubmitChangesHRDTBtn(testDataInputID, ptpScheduleID){
     var testDataInputId = testDataInputID
     var ptpScheduleid = ptpScheduleID
     var HRDTRemarks = $('#HRDTFormRemarks').val()
 
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: "LabAnalystPhp_repository/index_repo.php",
-        data: {
-            action:'submitDataChangedHRDTform',
-            testDataInputId:testDataInputId,
-            HRDTRemarks:HRDTRemarks,
-            ptpScheduleid:ptpScheduleid
-        },
-        success: function (data) {
-            var result = JSON.parse(data)
-            if(result==1){
-                Swal.fire('success', 'Test has been updated.', 'success');
-            }
-            else{
-                Swal.fire('error', 'something went wrong.', 'error');
-            }
-            process_tbl(4)
-            $('#TestDataInputFormHRDT').modal('hide')
-        }
-    });
+    alert(testDataInputId + " - " + ptpScheduleid + " - " + HRDTRemarks)
+    // $.ajax({
+    //     type: "POST",
+    //     dataType: "JSON",
+    //     url: "LabAnalystPhp_repository/index_repo.php",
+    //     data: {
+    //         action:'submitDataChangedHRDTform',
+    //         testDataInputId:testDataInputId,
+    //         HRDTRemarks:HRDTRemarks,
+    //         ptpScheduleid:ptpScheduleid
+    //     },
+    //     success: function (data) {
+    //         var result = JSON.parse(data)
+    //         if(result==1){
+    //             Swal.fire('success', 'Test has been updated.', 'success');
+    //         }
+    //         else{
+    //             Swal.fire('error', 'something went wrong.', 'error');
+    //         }
+    //         process_tbl(4)
+    //         $('#TestDataInputFormHRDT').modal('hide')
+    //     }
+    // });
 }
 
 function ApprovalHRDTBtn(testDataInputID, ptpScheduleID){
