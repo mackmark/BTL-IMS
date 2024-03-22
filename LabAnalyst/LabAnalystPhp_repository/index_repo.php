@@ -3355,31 +3355,27 @@ if(isset($_POST['action'])){
             $CapacityRemarks = 'For Retest';
         }
         if($formCategoryID == 2){
-            $updateTestDataInput = "update TestDataInput_tbl set IsActive = 0, DateModified = getdate() where TestPTPScheduleID = ".$PtpTestScheduleID;
-            $testDataInputExec = odbc_exec($connServer, $updateTestDataInput);
-            if($testDataInputExec){
-                $updateTestDetail = "update HRDTestDetails_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
-                $testDetailExec = odbc_exec($connServer, $updateTestDetail);
-                if($testDetailExec){
-                    $updateDischargeProfile = "update HRDTDischargeProfile_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
-                    $updateDischargeProfileExec = odbc_exec($connServer, $updateDischargeProfile);
+            $updateTestDetail = "update HRDTestDetails_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
+            $testDetailExec = odbc_exec($connServer, $updateTestDetail);
+            if($testDetailExec){
+                $updateDischargeProfile = "update HRDTDischargeProfile_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
+                $updateDischargeProfileExec = odbc_exec($connServer, $updateDischargeProfile);
+                if($updateDischargeProfileExec){
+                    $updateTestResult = "update HRDTTestResult_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
+                    $updateDischargeProfileExec = odbc_exec($connServer, $updateTestResult);
+
                     if($updateDischargeProfileExec){
-                        $updateTestResult = "update HRDTTestResult_tbl set IsActive = 0, DateModified = getdate() where TestDataInputID = ".$testDataInputId;
-                        $updateDischargeProfileExec = odbc_exec($connServer, $updateTestResult);
+                        $employeeID = $_COOKIE['BTL_employeeID'];
+                        $statusID = 15; // status: On-going Retest
+                        $result = 0;
+                        $data = array($testDataInputId, $employeeID, $statusID, $CapacityRemarks);
+                        $sql = "insert into TestDataStatus_tbl (TestDataInputID, EmployeeID, StatusID, Remarks) ";
+                        $sql .= "values (?, ?, ?, ?) ";
+                        $stmt = odbc_prepare($connServer, $sql);
+                        $execute = odbc_execute($stmt, $data);
 
-                        if($updateDischargeProfileExec){
-                            $employeeID = $_COOKIE['BTL_employeeID'];
-                            $statusID = 15; // status: On-going Retest
-                            $result = 0;
-                            $data = array($testDataInputId, $employeeID, $statusID, $CapacityRemarks);
-                            $sql = "insert into TestDataStatus_tbl (TestDataInputID, EmployeeID, StatusID, Remarks) ";
-                            $sql .= "values (?, ?, ?, ?) ";
-                            $stmt = odbc_prepare($connServer, $sql);
-                            $execute = odbc_execute($stmt, $data);
-
-                            if($execute){
-                                $result = 1;
-                            }
+                        if($execute){
+                            $result = 1;
                         }
                     }
                 }
@@ -3646,7 +3642,7 @@ if(isset($_POST['action'])){
         if($HaveRow !=0){
             $sql = "select testData.TestDataInputID, testDetail.EquipmentNo, testDetail.BatteryTemp, testDetail.OCV, testDetail.CCA, testDetail.IR, testDetail.DataFileName, status.StatusID, status.Remarks, testDetail.HRDTestDetailID from TestDataInput_tbl testData
             cross apply (
-                select Top 1 * from HRDTestDetails_tbl details where details.IsActive = 1 and testData.TestDataInputID = details.TestDataInputID order by details.DateCreated DESC 
+                select Top 1 * from HRDTestDetails_tbl details where testData.TestDataInputID = details.TestDataInputID order by details.DateCreated DESC 
             ) as testDetail
             cross apply (
                 select top 1 StatusID, Remarks from TestDataStatus_tbl where TestPTPScheduleID = testData.TestPTPScheduleID order by DateCreated DESC
@@ -3721,7 +3717,7 @@ if(isset($_POST['action'])){
 
                                         <input type="hidden" id="sampleId" value="'.$sampleId.'">
 
-                                        <input type="hidden" id="TestDataStatusID" value="'.$TestStatusID.'">
+                                        <input type="hidden" id="TestDataStatusID" value="'.$StatusID.'">
 
                                         <input type="text" id="TestDataTestTypeHRDT" class="form-control" name="TestDataTestType" value="'.$currentTestTxt.'"
                                             disabled>
@@ -4089,7 +4085,7 @@ if(isset($_POST['action'])){
 
                         <div class="form-group mt-3 ">
                             <label for="HRDTFormRemarks" class="form-label">Remarks</label>
-                            <textarea class="form-control" id="HRDTFormRemarks" rows="2"></textarea>
+                            <textarea class="form-control" id="HRDTFormRemarks" rows="2">For Approval</textarea>
                         </div>
                         
                         <div class="mt-4">
@@ -4721,28 +4717,101 @@ if(isset($_POST['action'])){
         $testDataInputId = isset($_POST['testDataInputId']) ? $_POST['testDataInputId'] : 0;
         $HRDTRemarks = isset($_POST['HRDTRemarks']) ? $_POST['HRDTRemarks'] : '';
         $ptpScheduleid = isset($_POST['ptpScheduleid']) ? $_POST['ptpScheduleid'] : 0;
+
         if($HRDTRemarks=='' || $HRDTRemarks==null){
-            $HRDTRemarks = 'Test Data Changed';
+            $HRDTRemarks = 'For Approval';
         }
+
+        //User Input
+        $EquipmentNo = isset($_POST['EquipmentNos']) ? $_POST['EquipmentNos'] : 0;
+        $BatteryTemp = isset($_POST['BatteryTemp']) ? $_POST['BatteryTemp'] : 0;
+        $OCV = isset($_POST['OCV']) ? $_POST['OCV'] : 0;
+        $CCA = isset($_POST['CCA']) ? $_POST['CCA'] : 0;
+        $IR = isset($_POST['IR']) ? $_POST['IR'] : 0;
+        $DataFileName = isset($_POST['DataFileName']) ? $_POST['DataFileName'] : 0;
+
+        $userInput = array(
+            'Equipment No' => $EquipmentNo,
+            'Battery Temperature' => $BatteryTemp,
+            'OCV' => $OCV,
+            'CCA' => $CCA,
+            'IR' => $IR,
+            'Data FileName' => $DataFileName
+        );
+        //User Input End
+
+        //Current Data
+        $HRDTestDetailID = 0;
+        $currentData = array();
+        $sql = "select top 1 * from HRDTestDetails_tbl where TestDataInputID = ".$testDataInputId." and IsActive = 1 order by DateCreated DESC ";
+        $execute = odbc_exec($connServer, $sql);
+        if($execute){
+            $rowData = odbc_fetch_array($execute);
+            $HRDTestDetailID = $rowData['HRDTestDetailID'];
+            $currentData[] = $rowData['EquipmentNo'];
+            $currentData[] = $rowData['BatteryTemp'];
+            $currentData[] = $rowData['OCV'];
+            $currentData[] = $rowData['CCA'];
+            $currentData[] = $rowData['IR'];
+            $currentData[] = $rowData['DataFileName'];
+
+            $updateData = array($EquipmentNo, $BatteryTemp, $OCV, $CCA, $IR, $DataFileName, $HRDTestDetailID);
+            $update = "update HRDTestDetails_tbl set EquipmentNo = ?, BatteryTemp = ?, OCV = ?, CCA = ?, IR = ?, DataFileName = ? where HRDTestDetailID = ? ";
+            $updateStmt = odbc_prepare($connServer, $update);
+            $executeUpdate = odbc_execute($updateStmt, $updateData);
+        }
+        //Current Data End
+        $DataChangeLog = array();
+
         $employeeID = $_COOKIE['BTL_employeeID'];
         $statusID = 9; // status: for change data
         $result = 0;
-        $data = array($ptpScheduleid, $employeeID, $statusID, $HRDTRemarks);
-        $sql = "insert into TestDataStatus_tbl (TestPTPScheduleID, EmployeeID, StatusID, Remarks) ";
-        $sql .= "values (?, ?, ?, ?) ";
-        $stmt = odbc_prepare($connServer, $sql);
-        $execute = odbc_execute($stmt, $data);
 
-        if($execute){
+        $countUserInput = count($userInput);
+        $countCurrentData = count($currentData);
+
+        $keys = array_keys($userInput);
+        $numKeys = count($keys);
+
+        for ($i = 0; $i < $numKeys; $i++) {
+            $key = $keys[$i];
+            $UserInputValue = $userInput[$key];
+            $currentDataValue = $currentData[$i];
+            // $result .=$key. ": ".$UserInputValue. " | ".$currentDataValue."</br>";
+
+            if($UserInputValue != $currentDataValue){
+                $upatedData = array(
+                    'Field' => $key,
+                    'OldData' => $currentDataValue,
+                    'NewData' => $UserInputValue
+                );
+                array_push($DataChangeLog, $upatedData);
+            }
+        }
+
+        foreach ($DataChangeLog as $change) {
+            // echo "Field: " . $change['Field'] . "<br>";
+            // echo "Old Data: " . $change['OldData'] . "<br>";
+            // echo "New Data: " . $change['NewData'] . "<br><br>";
+            // echo $change['Field']. " Field is change from ".$change['OldData']." to ".$change['NewData'];
+            $field =  $change['Field'];
+            $oldData = $change['OldData'];
+            $newData = $change['NewData'];
+            $TransactionRemarks = $change['Field']." Field is change from ".$change['OldData']." to ".$change['NewData'];
+
+            $dataInsert = array($HRDTestDetailID, $ptpScheduleid, $employeeID, $field, $oldData, $newData, $TransactionRemarks);
+            $insertLogs = "insert into ChangeDataTransactionLogs_tbl (TestReferenceID, TestPTPScheduleID, EmployeeID, FieldName, OldData, NewData, TransactionRemarks) values (?, ?, ?, ?, ?, ?, ?) ";
+            $stmt = odbc_prepare($connServer, $insertLogs);
+            $execute = odbc_execute($stmt, $dataInsert);
+        }
+
+        $statusID = 11; //For Approval
+        $dataAddstatus = array($testDataInputId, $employeeID, $statusID, $HRDTRemarks);
+        $insertAddstatus = "insert into TestDataStatus_tbl (TestDataInputID, EmployeeID, StatusID, Remarks) values (?, ?, ?, ?) ";
+        $stmt_addStatus = odbc_prepare($connServer, $insertAddstatus);
+        $addStatusExecute = odbc_execute($stmt_addStatus, $dataAddstatus);
+        if($addStatusExecute){
             $result = 1;
-            $updateSql = "update TestPTPSchedule_tbl set TestStatus = 1, DateModified = getdate() where TestPTPScheduleID = ".$ptpScheduleid;
-            $updateExecute = odbc_exec($connServer, $updateSql);
-            if($updateSql){
-                $result = 1;
-            }
-            else{
-                $result = 0;
-            }
         }
 
         echo json_encode($result);
@@ -4777,6 +4846,51 @@ if(isset($_POST['action'])){
 
         echo json_encode($result);
     }
+
+    //Edit DCH Profile blocks
+    else if($_POST['action'] == 'FetchDCHProfileEdit'){
+        $DCHProfileID = isset($_POST['DCHProfileID']) ? $_POST['DCHProfileID']:0;
+        $DCHVal = 0;
+        $ss_value = 0;
+        $sql = "select DischargeA, ss_value from HRDTDischargeProfile_tbl where HRDTDischargeProfileID = ".$DCHProfileID." and IsActive = 1 and IsDeleted = 0";
+        $execute = odbc_exec($connServer, $sql);
+        if($execute){
+            $rowData = odbc_fetch_array($execute);
+            $DCHVal = $rowData['DischargeA'];
+            $ss_value = $rowData['ss_value'];
+        }
+
+        $arr = array(
+            'DCHVal' => $DCHVal,
+            'seconds' => $ss_value
+        );
+
+        echo json_encode($arr);
+    }
+    //Edit DCH Profile blocks end
+
+    //Edit Test Result Block
+    else if($_POST['action'] == 'FetchTestResultEdit'){
+        $TestResultID = isset($_POST['TestResultID']) ? $_POST['TestResultID']:0;
+        $DCHVal = 0;
+        $ss_value = 0;
+        $sql = "select BattVoltage, ss_value from HRDTTestResult_tbl where HRDTTestResultID = ".$TestResultID." and IsActive = 1 and IsDeleted = 0";
+        $execute = odbc_exec($connServer, $sql);
+        if($execute){
+            $rowData = odbc_fetch_array($execute);
+            $Voltage = $rowData['BattVoltage'];
+            $ss_value = $rowData['ss_value'];
+        }
+
+        $arr = array(
+            'Voltage' => $Voltage,
+            'seconds' => $ss_value
+        );
+
+        echo json_encode($arr);
+    }
+    //Edit Test Result Block end
+
     //-------------HRDT Test Form End-------------
 }
 ?>

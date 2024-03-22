@@ -4502,7 +4502,8 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
-                                                <input type="hidden" id="HRDTTestPTPScheduleIDShowProfile">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDShowProfileEdit">
+                                                <input type="hidden" id="DCHProfileID">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">
@@ -4571,7 +4572,8 @@
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
-                                                <input type="hidden" id="HRDTTestPTPScheduleIDTestResult">
+                                                <input type="hidden" id="HRDTTestPTPScheduleIDTestResultEdit">
+                                                <input type="hidden" id="HRDTestResultID">
                                                 <form class="form form-vertical">
                                                     <div class="form-body">
                                                         <div class="row">

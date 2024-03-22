@@ -1700,8 +1700,33 @@ $('#HRDTDischargeProfileBtnSave').on('click', function(e){
 function DischargeProfileEdit(id, ptpScheduleID){
     var DCHProfileID = id
     var PtpScheduleID = ptpScheduleID
-    $('#HRDTDischargeProfileEdit').modal('show')
+    $('#HRDTTestPTPScheduleIDShowProfileEdit').val(PtpScheduleID)
+    $('#DCHProfileID').val(DCHProfileID)
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data:{
+            action:'FetchDCHProfileEdit',
+            DCHProfileID:DCHProfileID
+        },
+        success: function (data) {
+            $('#HRDTCurrentShowProfilesEdit').val(data.DCHVal)
+            $('#seconds-iconEdit').val(data.seconds)
+            $('#HRDTDischargeProfileEdit').modal('show')
+        }
+    });
+    
 }
+
+$('#HRDTDischargeProfileBtnUpdate').on('click', function(e){
+    e.preventDefault()
+    var current = $('#HRDTCurrentShowProfilesEdit').val()
+    var seconds = $('#seconds-iconEdit').val()
+    var TestPTPScheduleID = $('#HRDTTestPTPScheduleIDShowProfileEdit').val()
+    var DCHProfileID = $('#DCHProfileID').val()
+
+})
 
 function HRDTDischargeProfile_tbl(ptpscheduleID, statusid){
     var TestPTPScheduleId = ptpscheduleID
@@ -1824,7 +1849,24 @@ $('#TestResultBtnSave').on('click', function(e){
 function TestResultEdit(id, ptpScheduleID){
     var TestResultID = id
     var PtpScheduleID = ptpScheduleID
-    $('#HRDTTestResultFormEdit').modal('show')
+    $('#HRDTTestPTPScheduleIDTestResultEdit').val(PtpScheduleID)
+    $('#HRDTestResultID').val(TestResultID)
+
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: "LabAnalystPhp_repository/index_repo.php",
+        data:{
+            action:'FetchTestResultEdit',
+            TestResultID:TestResultID
+        },
+        success: function (data) {
+            $('#voltage-iconEdit').val(data.Voltage)
+            $('#time-iconEdit').val(data.seconds)
+            $('#HRDTTestResultFormEdit').modal('show')
+        }
+    });
+    
 }
 
 function HRDTTestResult_tbl(ptpscheduleID, statusid){
@@ -1922,29 +1964,77 @@ function SubmitChangesHRDTBtn(testDataInputID, ptpScheduleID){
     var ptpScheduleid = ptpScheduleID
     var HRDTRemarks = $('#HRDTFormRemarks').val()
 
-    alert(testDataInputId + " - " + ptpScheduleid + " - " + HRDTRemarks)
-    // $.ajax({
-    //     type: "POST",
-    //     dataType: "JSON",
-    //     url: "LabAnalystPhp_repository/index_repo.php",
-    //     data: {
-    //         action:'submitDataChangedHRDTform',
-    //         testDataInputId:testDataInputId,
-    //         HRDTRemarks:HRDTRemarks,
-    //         ptpScheduleid:ptpScheduleid
-    //     },
-    //     success: function (data) {
-    //         var result = JSON.parse(data)
-    //         if(result==1){
-    //             Swal.fire('success', 'Test has been updated.', 'success');
-    //         }
-    //         else{
-    //             Swal.fire('error', 'something went wrong.', 'error');
-    //         }
-    //         process_tbl(4)
-    //         $('#TestDataInputFormHRDT').modal('hide')
-    //     }
-    // });
+    //Test Details USer Input
+    var EquipmentNo = $('#HRDTTestDataEqipment').val()
+    var BatteryTemp = $('#HRDTBatTemp').val()
+    var OCV = $('#HRDTOCV').val()
+    var CCA = $('#HRDTCCA').val()
+    var IR = $('#HRDTIR').val()
+    var DataFileName = $('#HRDTDataFileName').val()
+    //Test Details USer Input End
+
+    // alert(EquipmentNo + " - " + BatteryTemp + " - " + OCV + " - " + CCA + " - " + IR + " - " + DataFileName)
+
+    // alert(testDataInputId + " - " + ptpScheduleid + " - " + HRDTRemarks)
+
+    var formData = new FormData();
+    formData.append('action', 'submitDataChangedHRDTform')
+    formData.append('testDataInputId', testDataInputId)
+    formData.append('ptpScheduleid', ptpScheduleid)
+    formData.append('EquipmentNos', EquipmentNo)
+    formData.append('BatteryTemp', BatteryTemp)
+    formData.append('OCV', OCV)
+    formData.append('CCA', CCA)
+    formData.append('IR', IR)
+    formData.append('DataFileName', DataFileName)
+    formData.append('HRDTRemarks', HRDTRemarks)
+
+    var IsProceed = true;
+    for (let entry of formData.entries()) {
+        console.log(entry[0] + ':', entry[1]);
+        if(entry[1] === null || entry[1] === 0 || entry[1].trim() === ""){
+            Swal.fire('Data Validation', 'Field cannot be empty, please put n/a if not applicable.', 'warning');
+            IsProceed = false;
+            break;
+        }
+    }
+
+    if(IsProceed){
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Do you want to submit this data?',
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Save',
+          }).then(result => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        contentType: false,
+                        processData: false,
+                        url: "LabAnalystPhp_repository/index_repo.php",
+                        data: formData,
+                        success: function (data) {
+                            var result = JSON.parse(data)
+                            if(result==1){
+                                Swal.fire('success', 'Test has been updated.', 'success');
+                            }
+                            else{
+                                Swal.fire('error', 'something went wrong.', 'error');
+                            }
+                            process_tbl(4)
+                            $('#TestDataInputFormHRDT').modal('hide')
+                        }
+                    });
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+                }
+         });
+    }
+
 }
 
 function ApprovalHRDTBtn(testDataInputID, ptpScheduleID){
